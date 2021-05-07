@@ -1,0 +1,5 @@
+name: VillageDefenseExtras
+version: ${project.version}
+main: me.hsgamer.villagedefenseextras.VillageDefenseExtras
+api-version: 1.13
+depend: [ VillageDefense ]
