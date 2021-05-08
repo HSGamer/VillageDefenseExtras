@@ -2,6 +2,7 @@ package me.hsgamer.villagedefenseextras;
 
 import me.hsgamer.hscore.bukkit.baseplugin.BasePlugin;
 import me.hsgamer.hscore.bukkit.utils.MessageUtils;
+import me.hsgamer.villagedefenseextras.command.SpawnZombieCommand;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
 import me.hsgamer.villagedefenseextras.config.MessageConfig;
 import me.hsgamer.villagedefenseextras.enhance.AutoLapisEnchantingTableEnhance;
@@ -14,11 +15,22 @@ import plugily.projects.villagedefense.Main;
 import plugily.projects.villagedefense.arena.managers.ZombieSpawnManager;
 
 public final class VillageDefenseExtras extends BasePlugin {
+    private static VillageDefenseExtras instance;
+
     private final MainConfig mainConfig = new MainConfig(this);
     private final MessageConfig messageConfig = new MessageConfig(this);
     private final ExtraZombieManager extraZombieManager = new ExtraZombieManager();
 
     private Main parentPlugin;
+
+    public static VillageDefenseExtras getInstance() {
+        return instance;
+    }
+
+    @Override
+    public void preLoad() {
+        instance = this;
+    }
 
     @Override
     public void load() {
@@ -35,6 +47,7 @@ public final class VillageDefenseExtras extends BasePlugin {
         registerFix();
         registerPowerUp();
         registerEnhance();
+        registerCommand();
 
         ZombieSpawnManager.CUSTOM_ZOMBIE_SPAWN_MANAGERS.add(extraZombieManager);
     }
@@ -60,6 +73,10 @@ public final class VillageDefenseExtras extends BasePlugin {
 
     private void registerPowerUp() {
         new LightningStrikePowerUp().tryRegister(parentPlugin);
+    }
+
+    private void registerCommand() {
+        registerCommand(new SpawnZombieCommand());
     }
 
     public Main getParentPlugin() {

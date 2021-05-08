@@ -1,18 +1,26 @@
 package me.hsgamer.villagedefenseextras.manager;
 
 import me.hsgamer.villagedefenseextras.api.ZombieSpawner;
+import me.hsgamer.villagedefenseextras.zombie.GhostZombie;
 import org.bukkit.Location;
+import org.bukkit.entity.Zombie;
 import plugily.projects.villagedefense.arena.Arena;
 import plugily.projects.villagedefense.arena.managers.CustomZombieSpawnManager;
 import plugily.projects.villagedefense.arena.options.ArenaOption;
+import plugily.projects.villagedefense.creatures.CreatureUtils;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
 
 public class ExtraZombieManager implements CustomZombieSpawnManager {
     private final List<ZombieSpawner> zombieSpawners = new CopyOnWriteArrayList<>();
+
+    public ExtraZombieManager() {
+        addZombieSpawner(new GhostZombie());
+    }
 
     @Override
     public void spawnZombie(Random random, Arena arena, int amount) {
@@ -26,7 +34,9 @@ public class ExtraZombieManager implements CustomZombieSpawnManager {
             for (int i = 0; i < spawnAmount; i++) {
                 if (arena.getOption(ArenaOption.ZOMBIES_TO_SPAWN) > 0 && random.nextDouble() <= zombieSpawner.getSpawnRate()) {
                     Location location = arena.getZombieSpawns().get(random.nextInt(arena.getZombieSpawns().size()));
-                    arena.getZombies().add(zombieSpawner.spawnZombie(location));
+                    Zombie zombie = zombieSpawner.spawnZombie(location);
+                    CreatureUtils.applyAttributes(zombie, arena);
+                    arena.getZombies().add(zombie);
                     arena.setOptionValue(ArenaOption.ZOMBIES_TO_SPAWN, arena.getOption(ArenaOption.ZOMBIES_TO_SPAWN) - 1);
                 }
             }
@@ -47,5 +57,9 @@ public class ExtraZombieManager implements CustomZombieSpawnManager {
 
     public Optional<ZombieSpawner> getZombieSpawner(String name) {
         return zombieSpawners.parallelStream().filter(spawner -> spawner.getName().equals(name)).findAny();
+    }
+
+    public List<String> getAllNames() {
+        return zombieSpawners.parallelStream().map(ZombieSpawner::getName).collect(Collectors.toList());
     }
 }

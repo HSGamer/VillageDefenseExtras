@@ -3,6 +3,7 @@ package me.hsgamer.villagedefenseextras.config;
 import me.hsgamer.hscore.bukkit.config.BukkitConfig;
 import me.hsgamer.hscore.config.PathableConfig;
 import me.hsgamer.hscore.config.path.BooleanConfigPath;
+import me.hsgamer.hscore.config.path.DoubleConfigPath;
 import me.hsgamer.hscore.config.path.IntegerConfigPath;
 import me.hsgamer.hscore.config.path.StringConfigPath;
 import me.hsgamer.villagedefenseextras.config.path.StringListConfigPath;
@@ -24,6 +25,9 @@ public class MainConfig extends PathableConfig {
     public static final StringConfigPath ENHANCE_SOUND_GAME_END = new StringConfigPath("enhance.sound.game-end", "");
     public static final StringConfigPath ENHANCE_SOUND_WAVE_START = new StringConfigPath("enhance.sound.wave-start", "");
     public static final StringConfigPath ENHANCE_SOUND_WAVE_END = new StringConfigPath("enhance.sound.wave-end", "");
+
+    public static final IntegerConfigPath ZOMBIE_GHOST_WAVE = new IntegerConfigPath("zombie.ghost.wave", 8);
+    public static final DoubleConfigPath ZOMBIE_GHOST_RATE = new DoubleConfigPath("zombie.ghost.rate", 0.2);
 
     public MainConfig(Plugin plugin) {
         super(new BukkitConfig(plugin, "config.yml"));
