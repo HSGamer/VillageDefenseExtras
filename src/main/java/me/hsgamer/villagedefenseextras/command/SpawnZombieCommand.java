@@ -29,6 +29,7 @@ public class SpawnZombieCommand extends Command {
             return false;
         }
         if (!(sender instanceof Player)) {
+            MessageUtils.sendMessage(sender, "&cThis command is player only");
             return false;
         }
         if (args.length <= 0) {
