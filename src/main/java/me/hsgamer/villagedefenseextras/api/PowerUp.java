@@ -1,4 +1,4 @@
-package me.hsgamer.villagedefenseextras.powerup;
+package me.hsgamer.villagedefenseextras.api;
 
 import org.bukkit.entity.Player;
 import plugily.projects.villagedefense.Main;

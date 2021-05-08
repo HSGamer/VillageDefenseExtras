@@ -1,4 +1,4 @@
-package me.hsgamer.villagedefenseextras.listener;
+package me.hsgamer.villagedefenseextras.api.listener;
 
 import me.hsgamer.villagedefenseextras.VillageDefenseExtras;
 import org.bukkit.entity.Player;

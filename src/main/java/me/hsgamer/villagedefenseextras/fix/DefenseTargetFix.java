@@ -1,6 +1,6 @@
 package me.hsgamer.villagedefenseextras.fix;
 
-import me.hsgamer.villagedefenseextras.listener.ArenaListener;
+import me.hsgamer.villagedefenseextras.api.listener.ArenaListener;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;

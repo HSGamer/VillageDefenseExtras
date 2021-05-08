@@ -1,8 +1,8 @@
 package me.hsgamer.villagedefenseextras.enhance;
 
 import me.hsgamer.hscore.common.Validate;
+import me.hsgamer.villagedefenseextras.api.listener.ArenaListener;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
-import me.hsgamer.villagedefenseextras.listener.ArenaListener;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import plugily.projects.villagedefense.api.event.game.VillageGameJoinAttemptEvent;

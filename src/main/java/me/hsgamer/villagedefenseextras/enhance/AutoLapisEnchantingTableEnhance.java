@@ -1,7 +1,7 @@
 package me.hsgamer.villagedefenseextras.enhance;
 
+import me.hsgamer.villagedefenseextras.api.listener.ArenaListener;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
-import me.hsgamer.villagedefenseextras.listener.ArenaListener;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.event.EventHandler;
