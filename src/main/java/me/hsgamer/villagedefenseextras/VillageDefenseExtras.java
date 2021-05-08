@@ -6,10 +6,7 @@ import me.hsgamer.villagedefenseextras.config.MainConfig;
 import me.hsgamer.villagedefenseextras.config.MessageConfig;
 import me.hsgamer.villagedefenseextras.enhance.AutoLapisEnchantingTableEnhance;
 import me.hsgamer.villagedefenseextras.enhance.SoundEnhance;
-import me.hsgamer.villagedefenseextras.fix.CraftPlayerInventoryFix;
-import me.hsgamer.villagedefenseextras.fix.DefenseTargetFix;
-import me.hsgamer.villagedefenseextras.fix.KitChooseExploitFix;
-import me.hsgamer.villagedefenseextras.fix.PickupPowerUpFix;
+import me.hsgamer.villagedefenseextras.fix.*;
 import me.hsgamer.villagedefenseextras.powerup.LightningStrikePowerUp;
 import org.bukkit.plugin.java.JavaPlugin;
 import plugily.projects.villagedefense.Main;
@@ -42,6 +39,7 @@ public final class VillageDefenseExtras extends BasePlugin {
         registerListener(new CraftPlayerInventoryFix());
         registerListener(new DefenseTargetFix());
         registerListener(new PickupPowerUpFix(this));
+        registerListener(new LobbyInteractFix());
     }
 
     private void registerEnhance() {

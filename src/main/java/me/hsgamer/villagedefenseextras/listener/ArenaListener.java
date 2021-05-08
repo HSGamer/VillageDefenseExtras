@@ -21,7 +21,7 @@ public interface ArenaListener extends Listener {
         return ArenaRegistry.isInArena(player);
     }
 
-    default Arena getArena(Player player) {
-        return ArenaRegistry.getArena(player);
+    default Optional<Arena> getArena(Player player) {
+        return Optional.ofNullable(ArenaRegistry.getArena(player));
     }
 }
