@@ -26,7 +26,7 @@ public class ExtraZombieManager implements CustomZombieSpawnManager {
             for (int i = 0; i < spawnAmount; i++) {
                 if (arena.getOption(ArenaOption.ZOMBIES_TO_SPAWN) > 0 && random.nextDouble() <= zombieSpawner.getSpawnRate()) {
                     Location location = arena.getZombieSpawns().get(random.nextInt(arena.getZombieSpawns().size()));
-                    zombieSpawner.spawnZombie(location);
+                    arena.getZombies().add(zombieSpawner.spawnZombie(location));
                     arena.setOptionValue(ArenaOption.ZOMBIES_TO_SPAWN, arena.getOption(ArenaOption.ZOMBIES_TO_SPAWN) - 1);
                 }
             }

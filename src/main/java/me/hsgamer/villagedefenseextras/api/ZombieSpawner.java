@@ -1,6 +1,7 @@
 package me.hsgamer.villagedefenseextras.api;
 
 import org.bukkit.Location;
+import org.bukkit.entity.Zombie;
 
 import java.util.List;
 
@@ -17,5 +18,5 @@ public interface ZombieSpawner {
 
     List<Integer> getSpawnPhases();
 
-    void spawnZombie(Location location);
+    Zombie spawnZombie(Location location);
 }
