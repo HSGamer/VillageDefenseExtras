@@ -57,8 +57,8 @@ public class GhostZombie implements ZombieSpawner {
                     return;
                 }
                 Location location = zombie.getEyeLocation();
-                location.getWorld().spawnParticle(Particle.FALLING_DUST, location, 10, 0.5, 0.1, 0.5, Material.STONE.createBlockData());
+                location.getWorld().spawnParticle(Particle.FALLING_DUST, location, 1, 0.2, 0.1, 0.2, Material.STONE.createBlockData());
             }
-        }.runTaskTimerAsynchronously(VillageDefenseExtras.getInstance(), 0, 10);
+        }.runTaskTimerAsynchronously(VillageDefenseExtras.getInstance(), 0, 2);
     }
 }
