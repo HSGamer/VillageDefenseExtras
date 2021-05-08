@@ -4,6 +4,7 @@ import me.hsgamer.villagedefenseextras.VillageDefenseExtras;
 import me.hsgamer.villagedefenseextras.api.ZombieSpawner;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.entity.Zombie;
 import org.bukkit.potion.PotionEffect;
@@ -56,7 +57,7 @@ public class GhostZombie implements ZombieSpawner {
                     return;
                 }
                 Location location = zombie.getEyeLocation();
-                location.getWorld().spawnParticle(Particle.FALLING_DUST, location, 10);
+                location.getWorld().spawnParticle(Particle.FALLING_DUST, location, 10, 0.5, 0.1, 0.5, Material.STONE.createBlockData());
             }
         }.runTaskTimerAsynchronously(VillageDefenseExtras.getInstance(), 0, 10);
     }
