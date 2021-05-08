@@ -30,7 +30,7 @@ public class GhostZombie implements ZombieSpawner {
 
     @Override
     public int getFinalAmount(int spawnAmount) {
-        return spawnAmount - 5;
+        return Math.min(spawnAmount, MainConfig.ZOMBIE_GHOST_AMOUNT.getValue());
     }
 
     @Override
