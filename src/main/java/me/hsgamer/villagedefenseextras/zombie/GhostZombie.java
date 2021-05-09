@@ -11,8 +11,9 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import plugily.projects.villagedefense.creatures.CreatureUtils;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class GhostZombie implements RunnableZombieSpawner {
     private final BlockData data = Material.COBBLESTONE.createBlockData();
@@ -39,7 +40,7 @@ public class GhostZombie implements RunnableZombieSpawner {
 
     @Override
     public List<Integer> getSpawnPhases() {
-        return Arrays.asList(3, 6, 7, 9, 11, 12);
+        return IntStream.range(1, 7).boxed().collect(Collectors.toList());
     }
 
     @Override

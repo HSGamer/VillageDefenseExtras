@@ -5,12 +5,12 @@ import org.bukkit.entity.Zombie;
 import plugily.projects.villagedefense.arena.Arena;
 import plugily.projects.villagedefense.creatures.CreatureUtils;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public interface ZombieSpawner {
-    List<Integer> ALL_PHASES = IntStream.range(0, 20).collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+    List<Integer> ALL_PHASES = IntStream.range(0, 20).boxed().collect(Collectors.toList());
 
     String getName();
 

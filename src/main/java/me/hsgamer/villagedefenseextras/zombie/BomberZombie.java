@@ -13,8 +13,9 @@ import plugily.projects.villagedefense.creatures.CreatureUtils;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.VersionUtils;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.xseries.XMaterial;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class BomberZombie implements RunnableZombieSpawner {
     @Override
@@ -78,6 +79,6 @@ public class BomberZombie implements RunnableZombieSpawner {
 
     @Override
     public List<Integer> getSpawnPhases() {
-        return Arrays.asList(2, 6, 8);
+        return IntStream.range(3, 5).boxed().collect(Collectors.toList());
     }
 }
