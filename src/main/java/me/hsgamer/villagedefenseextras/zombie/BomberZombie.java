@@ -10,6 +10,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Zombie;
 import org.bukkit.util.Vector;
 import plugily.projects.villagedefense.creatures.CreatureUtils;
+import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.VersionUtils;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.xseries.XMaterial;
 
 import java.util.Arrays;
@@ -21,6 +22,8 @@ public class BomberZombie implements RunnableZombieSpawner {
         Zombie zombie = CreatureUtils.getCreatureInitializer().spawnFastZombie(location);
         zombie.getEquipment().setHelmet(XMaterial.REDSTONE_BLOCK.parseItem());
         zombie.getEquipment().setHelmetDropChance(0.0F);
+        VersionUtils.setItemInHand(zombie, XMaterial.TNT.parseItem());
+        VersionUtils.setItemInHandDropChance(zombie, 0.0F);
         return zombie;
     }
 
