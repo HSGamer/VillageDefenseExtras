@@ -2,10 +2,7 @@ package me.hsgamer.villagedefenseextras.config;
 
 import me.hsgamer.hscore.bukkit.config.BukkitConfig;
 import me.hsgamer.hscore.config.PathableConfig;
-import me.hsgamer.hscore.config.path.BooleanConfigPath;
-import me.hsgamer.hscore.config.path.DoubleConfigPath;
-import me.hsgamer.hscore.config.path.IntegerConfigPath;
-import me.hsgamer.hscore.config.path.StringConfigPath;
+import me.hsgamer.hscore.config.path.*;
 import me.hsgamer.villagedefenseextras.config.path.StringListConfigPath;
 import org.bukkit.plugin.Plugin;
 
@@ -29,6 +26,11 @@ public class MainConfig extends PathableConfig {
     public static final IntegerConfigPath ZOMBIE_GHOST_WAVE = new IntegerConfigPath("zombie.ghost.wave", 8);
     public static final IntegerConfigPath ZOMBIE_GHOST_AMOUNT = new IntegerConfigPath("zombie.ghost.amount", 10);
     public static final DoubleConfigPath ZOMBIE_GHOST_RATE = new DoubleConfigPath("zombie.ghost.rate", 0.2);
+    public static final IntegerConfigPath ZOMBIE_BOMBER_WAVE = new IntegerConfigPath("zombie.bomber.wave", 10);
+    public static final IntegerConfigPath ZOMBIE_BOMBER_AMOUNT = new IntegerConfigPath("zombie.bomber.amount", 10);
+    public static final DoubleConfigPath ZOMBIE_BOMBER_RATE = new DoubleConfigPath("zombie.bomber.rate", 0.2);
+    public static final DoubleConfigPath ZOMBIE_BOMBER_THROW_LENGTH = new DoubleConfigPath("zombie.bomber.throw-length", 2D);
+    public static final LongConfigPath ZOMBIE_BOMBER_THROW_DELAY = new LongConfigPath("zombie.bomber.throw-delay", 40L);
 
     public MainConfig(Plugin plugin) {
         super(new BukkitConfig(plugin, "config.yml"));

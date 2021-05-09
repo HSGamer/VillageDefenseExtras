@@ -1,6 +1,7 @@
 package me.hsgamer.villagedefenseextras.manager;
 
 import me.hsgamer.villagedefenseextras.api.zombie.ZombieSpawner;
+import me.hsgamer.villagedefenseextras.zombie.BomberZombie;
 import me.hsgamer.villagedefenseextras.zombie.GhostZombie;
 import org.bukkit.Location;
 import plugily.projects.villagedefense.arena.Arena;
@@ -18,6 +19,7 @@ public class ExtraZombieManager implements CustomZombieSpawnManager {
 
     public ExtraZombieManager() {
         addZombieSpawner(new GhostZombie());
+        addZombieSpawner(new BomberZombie());
     }
 
     @Override
