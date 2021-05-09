@@ -1,10 +1,10 @@
 package me.hsgamer.villagedefenseextras.enhance;
 
 import me.hsgamer.hscore.common.Validate;
-import me.hsgamer.villagedefenseextras.api.listener.ArenaListener;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import plugily.projects.villagedefense.api.event.game.VillageGameJoinAttemptEvent;
 import plugily.projects.villagedefense.api.event.game.VillageGameLeaveAttemptEvent;
 import plugily.projects.villagedefense.api.event.game.VillageGameStartEvent;
@@ -16,7 +16,7 @@ import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.xs
 import java.util.Collection;
 import java.util.Optional;
 
-public class SoundEnhance implements ArenaListener {
+public class SoundEnhance implements Listener {
     @EventHandler
     public void onGameJoin(VillageGameJoinAttemptEvent event) {
         sendSound(MainConfig.ENHANCE_SOUND_JOIN.getValue(), event.getPlayer());

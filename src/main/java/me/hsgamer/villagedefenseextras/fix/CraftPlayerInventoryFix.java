@@ -1,14 +1,15 @@
 package me.hsgamer.villagedefenseextras.fix;
 
-import me.hsgamer.villagedefenseextras.api.listener.ArenaListener;
+import me.hsgamer.villagedefenseextras.Utils;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.inventory.CraftingInventory;
 
-public class CraftPlayerInventoryFix implements ArenaListener {
+public class CraftPlayerInventoryFix implements Listener {
 
     @EventHandler
     public void onClick(InventoryClickEvent event) {
@@ -22,7 +23,7 @@ public class CraftPlayerInventoryFix implements ArenaListener {
         }
         Player player = (Player) humanEntity;
 
-        if (isInArena(player)) {
+        if (Utils.isInArena(player)) {
             event.setCancelled(true);
         }
     }
@@ -39,7 +40,7 @@ public class CraftPlayerInventoryFix implements ArenaListener {
         }
         Player player = (Player) humanEntity;
 
-        if (isInArena(player)) {
+        if (Utils.isInArena(player)) {
             event.setCancelled(true);
         }
     }

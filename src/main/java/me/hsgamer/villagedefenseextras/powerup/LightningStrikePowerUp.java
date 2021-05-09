@@ -1,6 +1,6 @@
 package me.hsgamer.villagedefenseextras.powerup;
 
-import me.hsgamer.villagedefenseextras.api.PowerUp;
+import me.hsgamer.villagedefenseextras.api.powerup.PowerUp;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
 import me.hsgamer.villagedefenseextras.config.MessageConfig;
 import org.bukkit.Location;

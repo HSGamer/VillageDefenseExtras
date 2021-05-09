@@ -59,10 +59,10 @@ public final class VillageDefenseExtras extends BasePlugin {
     }
 
     private void registerFix() {
-        registerListener(new KitChooseExploitFix(this));
+        registerListener(new KitChooseExploitFix());
         registerListener(new CraftPlayerInventoryFix());
         registerListener(new DefenseTargetFix());
-        registerListener(new PickupPowerUpFix(this));
+        registerListener(new PickupPowerUpFix());
         registerListener(new LobbyInteractFix());
     }
 

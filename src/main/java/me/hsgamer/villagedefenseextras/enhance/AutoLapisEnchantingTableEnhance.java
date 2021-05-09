@@ -1,10 +1,11 @@
 package me.hsgamer.villagedefenseextras.enhance;
 
-import me.hsgamer.villagedefenseextras.api.listener.ArenaListener;
+import me.hsgamer.villagedefenseextras.Utils;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.enchantment.EnchantItemEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
@@ -19,7 +20,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class AutoLapisEnchantingTableEnhance implements ArenaListener {
+public class AutoLapisEnchantingTableEnhance implements Listener {
     private final Map<Inventory, ItemStack> inventoryMap = new ConcurrentHashMap<>();
 
     private Optional<ItemStack> getLapisLevel(Arena arena) {
@@ -48,7 +49,7 @@ public class AutoLapisEnchantingTableEnhance implements ArenaListener {
         if (location == null) {
             return;
         }
-        Optional<Arena> optionalArena = getArena(location);
+        Optional<Arena> optionalArena = Utils.getArena(location);
         if (!optionalArena.isPresent()) {
             return;
         }

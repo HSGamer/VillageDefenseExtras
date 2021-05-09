@@ -1,13 +1,11 @@
 package me.hsgamer.villagedefenseextras.manager;
 
-import me.hsgamer.villagedefenseextras.api.ZombieSpawner;
+import me.hsgamer.villagedefenseextras.api.zombie.ZombieSpawner;
 import me.hsgamer.villagedefenseextras.zombie.GhostZombie;
 import org.bukkit.Location;
-import org.bukkit.entity.Zombie;
 import plugily.projects.villagedefense.arena.Arena;
 import plugily.projects.villagedefense.arena.managers.CustomZombieSpawnManager;
 import plugily.projects.villagedefense.arena.options.ArenaOption;
-import plugily.projects.villagedefense.creatures.CreatureUtils;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,9 +32,7 @@ public class ExtraZombieManager implements CustomZombieSpawnManager {
             for (int i = 0; i < spawnAmount; i++) {
                 if (arena.getOption(ArenaOption.ZOMBIES_TO_SPAWN) > 0 && random.nextDouble() <= zombieSpawner.getSpawnRate()) {
                     Location location = arena.getZombieSpawns().get(random.nextInt(arena.getZombieSpawns().size()));
-                    Zombie zombie = zombieSpawner.spawnZombie(location);
-                    CreatureUtils.applyAttributes(zombie, arena);
-                    arena.getZombies().add(zombie);
+                    zombieSpawner.spawnZombie(location, arena);
                     arena.setOptionValue(ArenaOption.ZOMBIES_TO_SPAWN, arena.getOption(ArenaOption.ZOMBIES_TO_SPAWN) - 1);
                 }
             }

@@ -1,7 +1,6 @@
 package me.hsgamer.villagedefenseextras.zombie;
 
-import me.hsgamer.villagedefenseextras.VillageDefenseExtras;
-import me.hsgamer.villagedefenseextras.api.ZombieSpawner;
+import me.hsgamer.villagedefenseextras.api.zombie.RunnableZombieSpawner;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -10,12 +9,11 @@ import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.Zombie;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.scheduler.BukkitRunnable;
 import plugily.projects.villagedefense.creatures.CreatureUtils;
 
 import java.util.List;
 
-public class GhostZombie implements ZombieSpawner {
+public class GhostZombie implements RunnableZombieSpawner {
     private final BlockData data = Material.COBBLESTONE.createBlockData();
 
     @Override
@@ -44,24 +42,25 @@ public class GhostZombie implements ZombieSpawner {
     }
 
     @Override
-    public Zombie spawnZombie(Location location) {
+    public Zombie createBaseZombie(Location location) {
         Zombie zombie = CreatureUtils.getCreatureInitializer().spawnFastZombie(location);
         zombie.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 1));
-        applyParticles(zombie);
         return zombie;
     }
 
-    private void applyParticles(Zombie zombie) {
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                if (zombie.isDead()) {
-                    cancel();
-                    return;
-                }
-                Location location = zombie.getEyeLocation();
-                location.getWorld().spawnParticle(Particle.FALLING_DUST, location, 1, 0.2, 0.1, 0.2, data);
-            }
-        }.runTaskTimerAsynchronously(VillageDefenseExtras.getInstance(), 0, 2);
+    @Override
+    public void onTick(Zombie zombie) {
+        Location location = zombie.getEyeLocation();
+        location.getWorld().spawnParticle(Particle.FALLING_DUST, location, 1, 0.2, 0.1, 0.2, data);
+    }
+
+    @Override
+    public long getPeriod() {
+        return 2;
+    }
+
+    @Override
+    public boolean isAsync() {
+        return true;
     }
 }

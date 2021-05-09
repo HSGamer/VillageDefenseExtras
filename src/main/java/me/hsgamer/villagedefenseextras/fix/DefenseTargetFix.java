@@ -1,11 +1,12 @@
 package me.hsgamer.villagedefenseextras.fix;
 
-import me.hsgamer.villagedefenseextras.api.listener.ArenaListener;
+import me.hsgamer.villagedefenseextras.Utils;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 
-public class DefenseTargetFix implements ArenaListener {
+public class DefenseTargetFix implements Listener {
     @EventHandler
     public void onTarget(EntityTargetLivingEntityEvent event) {
         Entity entity = event.getEntity();
@@ -15,7 +16,7 @@ public class DefenseTargetFix implements ArenaListener {
             return;
         }
 
-        if (isInArena(entity.getLocation()) && target instanceof Villager) {
+        if (Utils.isInArena(entity.getLocation()) && target instanceof Villager) {
             event.setTarget(null);
             event.setCancelled(true);
         }

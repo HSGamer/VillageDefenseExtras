@@ -1,7 +1,9 @@
-package me.hsgamer.villagedefenseextras.api;
+package me.hsgamer.villagedefenseextras.api.zombie;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Zombie;
+import plugily.projects.villagedefense.arena.Arena;
+import plugily.projects.villagedefense.creatures.CreatureUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,4 +25,10 @@ public interface ZombieSpawner {
     List<Integer> getSpawnPhases();
 
     Zombie spawnZombie(Location location);
+
+    default void spawnZombie(Location location, Arena arena) {
+        Zombie zombie = spawnZombie(location);
+        CreatureUtils.applyAttributes(zombie, arena);
+        arena.getZombies().add(zombie);
+    }
 }

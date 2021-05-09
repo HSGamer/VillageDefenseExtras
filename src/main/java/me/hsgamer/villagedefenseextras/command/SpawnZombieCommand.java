@@ -1,8 +1,9 @@
 package me.hsgamer.villagedefenseextras.command;
 
 import me.hsgamer.hscore.bukkit.utils.MessageUtils;
+import me.hsgamer.villagedefenseextras.Utils;
 import me.hsgamer.villagedefenseextras.VillageDefenseExtras;
-import me.hsgamer.villagedefenseextras.api.ZombieSpawner;
+import me.hsgamer.villagedefenseextras.api.zombie.ZombieSpawner;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -10,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 import org.jetbrains.annotations.NotNull;
+import plugily.projects.villagedefense.arena.Arena;
 
 import java.util.Collections;
 import java.util.List;
@@ -36,13 +38,19 @@ public class SpawnZombieCommand extends Command {
             MessageUtils.sendMessage(sender, getUsage());
             return false;
         }
-        Location location = ((Player) sender).getLocation();
-        Optional<ZombieSpawner> optional = VillageDefenseExtras.getInstance().getExtraZombieManager().getZombieSpawner(args[0]);
-        if (!optional.isPresent()) {
+        Optional<ZombieSpawner> optionalZombieSpawner = VillageDefenseExtras.getInstance().getExtraZombieManager().getZombieSpawner(args[0]);
+        if (!optionalZombieSpawner.isPresent()) {
             MessageUtils.sendMessage(sender, "&cThat zombie name is not found");
             return false;
         }
-        optional.get().spawnZombie(location);
+        Location location = ((Player) sender).getLocation();
+        ZombieSpawner zombieSpawner = optionalZombieSpawner.get();
+        Optional<Arena> optionalArena = Utils.getArena((Player) sender);
+        if (optionalArena.isPresent()) {
+            zombieSpawner.spawnZombie(location, optionalArena.get());
+        } else {
+            zombieSpawner.spawnZombie(location);
+        }
         return true;
     }
 
