@@ -64,6 +64,7 @@ public final class VillageDefenseExtras extends BasePlugin {
         registerListener(new DefenseTargetFix());
         registerListener(new PickupPowerUpFix());
         registerListener(new LobbyInteractFix());
+        registerListener(new RequiredKitItemFix());
     }
 
     private void registerEnhance() {
