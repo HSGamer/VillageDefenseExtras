@@ -6,7 +6,6 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.enchantment.EnchantItemEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
@@ -70,12 +69,15 @@ public class AutoLapisEnchantingTableEnhance implements Listener {
         }
         ItemStack itemStack = optionalItemStack.get();
         inventory.setItem(1, itemStack);
-        inventoryMap.put(inventory, itemStack.clone());
+        inventoryMap.put(inventory, itemStack);
     }
 
     @EventHandler
     public void closeInventoryEvent(InventoryCloseEvent event) {
         Inventory inventory = event.getInventory();
+        if (inventory.getViewers().size() > 1) {
+            return;
+        }
         if (inventoryMap.containsKey(inventory)) {
             inventoryMap.remove(inventory);
             inventory.setItem(1, null);
@@ -90,14 +92,6 @@ public class AutoLapisEnchantingTableEnhance implements Listener {
         }
         if (inventoryMap.containsKey(inventory) && event.getSlot() == 1) {
             event.setCancelled(true);
-        }
-    }
-
-    @EventHandler
-    public void enchantItemEvent(EnchantItemEvent event) {
-        Inventory inventory = event.getInventory();
-        if (inventoryMap.containsKey(inventory)) {
-            inventory.setItem(1, inventoryMap.get(inventory).clone());
         }
     }
 }
