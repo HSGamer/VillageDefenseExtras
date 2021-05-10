@@ -7,6 +7,9 @@ import me.hsgamer.villagedefenseextras.config.path.StringListConfigPath;
 import org.bukkit.plugin.Plugin;
 
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class MainConfig extends PathableConfig {
     public static final BooleanConfigPath POWER_UP_LIGHTNING_STRIKE_ENABLED = new BooleanConfigPath("power-up.lightning-strike.enabled", true);
@@ -26,12 +29,14 @@ public class MainConfig extends PathableConfig {
     public static final IntegerConfigPath ZOMBIE_GHOST_WAVE = new IntegerConfigPath("zombie.ghost.wave", 8);
     public static final IntegerConfigPath ZOMBIE_GHOST_AMOUNT = new IntegerConfigPath("zombie.ghost.amount", 10);
     public static final DoubleConfigPath ZOMBIE_GHOST_RATE = new DoubleConfigPath("zombie.ghost.rate", 0.2);
+    public static final SimpleConfigPath<List<Integer>> ZOMBIE_GHOST_PHASE = new SimpleConfigPath<>("zombie.ghost.phase", IntStream.range(1, 7).boxed().collect(Collectors.toList()));
     public static final IntegerConfigPath ZOMBIE_BOMBER_WAVE = new IntegerConfigPath("zombie.bomber.wave", 10);
     public static final IntegerConfigPath ZOMBIE_BOMBER_AMOUNT = new IntegerConfigPath("zombie.bomber.amount", 10);
     public static final DoubleConfigPath ZOMBIE_BOMBER_RATE = new DoubleConfigPath("zombie.bomber.rate", 0.2);
     public static final DoubleConfigPath ZOMBIE_BOMBER_THROW_LENGTH = new DoubleConfigPath("zombie.bomber.throw-length", 2D);
     public static final DoubleConfigPath ZOMBIE_BOMBER_THROW_OFFSET_Y = new DoubleConfigPath("zombie.bomber.throw-offset-y", 1.5D);
     public static final LongConfigPath ZOMBIE_BOMBER_THROW_DELAY = new LongConfigPath("zombie.bomber.throw-delay", 40L);
+    public static final SimpleConfigPath<List<Integer>> ZOMBIE_BOMBER_PHASE = new SimpleConfigPath<>("zombie.bomber.phase", IntStream.range(3, 5).boxed().collect(Collectors.toList()));
 
     public static final BooleanConfigPath KIT_DEFUSER_ENABLED = new BooleanConfigPath("kit.defuser.enabled", true);
     public static final IntegerConfigPath KIT_DEFUSER_COOLDOWN = new IntegerConfigPath("kit.defuser.cooldown", 10);
