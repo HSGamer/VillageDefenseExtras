@@ -94,7 +94,7 @@ public class DefuserKit extends PremiumKit implements Listener {
 
         if (user.getCooldown("defuser") > 0) {
             String message = getPlugin().getChatManager().colorMessage(Messages.KITS_ABILITY_STILL_ON_COOLDOWN);
-            message = message.replaceFirst("%COOLDOWN%", Long.toString(user.getCooldown("clean")));
+            message = message.replaceFirst("%COOLDOWN%", Long.toString(user.getCooldown("defuser")));
             player.sendMessage(message);
             return;
         }
