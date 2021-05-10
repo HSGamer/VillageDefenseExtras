@@ -34,8 +34,6 @@ import static plugily.projects.villagedefense.utils.Utils.splitString;
 
 public class DefuserKit extends PremiumKit implements Listener {
 
-    private final BlockData data = Material.COBBLESTONE.createBlockData();
-
     public DefuserKit() {
         setName(MessageUtils.colorize(MessageConfig.KIT_DEFUSER_NAME.getValue()));
         List<String> description = splitString(MessageUtils.colorize(MessageConfig.KIT_DEFUSER_DESCRIPTION.getValue()), 40);
@@ -107,7 +105,8 @@ public class DefuserKit extends PremiumKit implements Listener {
             return;
         }
 
-        tntPrimed.getWorld().spawnParticle(Particle.FALLING_DUST, tntPrimed.getLocation(), 1, 0.2, 0.1, 0.2, data);
+        tntPrimed.getWorld().spawnParticle(Particle.LAVA, tntPrimed.getLocation(), 20, 0.5, 0.5, 0.5);
+        tntPrimed.getWorld().spawnParticle(Particle.DRIP_LAVA, tntPrimed.getLocation(), 20, 0.5, 0.5, 0.5);
         XSound.BLOCK_FIRE_EXTINGUISH.play(tntPrimed.getLocation());
         tntPrimed.remove();
         user.setCooldown("defuser", MainConfig.KIT_DEFUSER_COOLDOWN.getValue());
