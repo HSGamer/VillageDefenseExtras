@@ -2,7 +2,6 @@ package me.hsgamer.villagedefenseextras.fix;
 
 import me.hsgamer.hscore.bukkit.utils.MessageUtils;
 import me.hsgamer.villagedefenseextras.Utils;
-import me.hsgamer.villagedefenseextras.VillageDefenseExtras;
 import me.hsgamer.villagedefenseextras.config.MessageConfig;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,8 +14,9 @@ import plugily.projects.villagedefense.kits.premium.*;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.VersionUtils;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.events.api.CBPlayerInteractEvent;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.item.ItemUtils;
-import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.misc.stuff.ComplementAccessor;
 import plugily.projects.villagedefense.user.User;
+
+import static me.hsgamer.villagedefenseextras.Utils.checkDisplayName;
 
 public class RequiredKitItemFix implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
@@ -58,13 +58,5 @@ public class RequiredKitItemFix implements Listener {
 
     private void sendMessage(Player player) {
         MessageUtils.sendMessage(player, MessageConfig.FIX_REQUIRED_KIT_ITEM_CANNOT_USE_ITEM.getValue());
-    }
-
-    private boolean checkDisplayName(ItemStack itemStack, String name) {
-        return ComplementAccessor.getComplement().getDisplayName(itemStack.getItemMeta()).equalsIgnoreCase(name);
-    }
-
-    private boolean checkDisplayName(ItemStack itemStack, Messages message) {
-        return checkDisplayName(itemStack, VillageDefenseExtras.getInstance().getParentPlugin().getChatManager().colorMessage(message));
     }
 }

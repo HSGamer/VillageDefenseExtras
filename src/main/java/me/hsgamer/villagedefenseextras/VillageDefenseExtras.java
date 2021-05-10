@@ -8,11 +8,13 @@ import me.hsgamer.villagedefenseextras.config.MessageConfig;
 import me.hsgamer.villagedefenseextras.enhance.AutoLapisEnchantingTableEnhance;
 import me.hsgamer.villagedefenseextras.enhance.SoundEnhance;
 import me.hsgamer.villagedefenseextras.fix.*;
+import me.hsgamer.villagedefenseextras.kit.DefuserKit;
 import me.hsgamer.villagedefenseextras.manager.ExtraZombieManager;
 import me.hsgamer.villagedefenseextras.powerup.LightningStrikePowerUp;
 import org.bukkit.plugin.java.JavaPlugin;
 import plugily.projects.villagedefense.Main;
 import plugily.projects.villagedefense.arena.managers.ZombieSpawnManager;
+import plugily.projects.villagedefense.kits.KitRegistry;
 
 public final class VillageDefenseExtras extends BasePlugin {
     private static VillageDefenseExtras instance;
@@ -47,6 +49,7 @@ public final class VillageDefenseExtras extends BasePlugin {
         registerFix();
         registerPowerUp();
         registerEnhance();
+        registerKit();
         registerCommand();
 
         ZombieSpawnManager.CUSTOM_ZOMBIE_SPAWN_MANAGERS.add(extraZombieManager);
@@ -70,6 +73,12 @@ public final class VillageDefenseExtras extends BasePlugin {
     private void registerEnhance() {
         registerListener(new AutoLapisEnchantingTableEnhance());
         registerListener(new SoundEnhance());
+    }
+
+    private void registerKit() {
+        if (MainConfig.KIT_DEFUSER_ENABLED.getValue()) {
+            KitRegistry.registerKit(new DefuserKit());
+        }
     }
 
     private void registerPowerUp() {

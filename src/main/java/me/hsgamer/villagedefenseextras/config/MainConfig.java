@@ -33,6 +33,10 @@ public class MainConfig extends PathableConfig {
     public static final DoubleConfigPath ZOMBIE_BOMBER_THROW_OFFSET_Y = new DoubleConfigPath("zombie.bomber.throw-offset-y", 1.5D);
     public static final LongConfigPath ZOMBIE_BOMBER_THROW_DELAY = new LongConfigPath("zombie.bomber.throw-delay", 40L);
 
+    public static final BooleanConfigPath KIT_DEFUSER_ENABLED = new BooleanConfigPath("kit.defuser.enabled", true);
+    public static final IntegerConfigPath KIT_DEFUSER_COOLDOWN = new IntegerConfigPath("kit.defuser.cooldown", 10);
+    public static final FloatConfigPath KIT_DEFUSER_FAIL_YIELD_MULTIPLY = new FloatConfigPath("kit.defuser.fail-yield-multiply", 1F);
+
     public MainConfig(Plugin plugin) {
         super(new BukkitConfig(plugin, "config.yml"));
     }
