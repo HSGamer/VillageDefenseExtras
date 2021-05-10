@@ -6,6 +6,8 @@ import me.hsgamer.villagedefenseextras.config.MainConfig;
 import me.hsgamer.villagedefenseextras.config.MessageConfig;
 import org.bukkit.Color;
 import org.bukkit.Material;
+import org.bukkit.Particle;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TNTPrimed;
@@ -18,6 +20,7 @@ import plugily.projects.villagedefense.handlers.language.Messages;
 import plugily.projects.villagedefense.kits.basekits.PremiumKit;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.VersionUtils;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.xseries.XMaterial;
+import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.xseries.XSound;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.helper.ArmorHelper;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.helper.WeaponHelper;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.item.ItemBuilder;
@@ -30,6 +33,8 @@ import static me.hsgamer.villagedefenseextras.Utils.*;
 import static plugily.projects.villagedefense.utils.Utils.splitString;
 
 public class DefuserKit extends PremiumKit implements Listener {
+
+    private final BlockData data = Material.COBBLESTONE.createBlockData();
 
     public DefuserKit() {
         setName(MessageUtils.colorize(MessageConfig.KIT_DEFUSER_NAME.getValue()));
@@ -80,6 +85,9 @@ public class DefuserKit extends PremiumKit implements Listener {
             return;
         }
         TNTPrimed tntPrimed = (TNTPrimed) entity;
+        if (tntPrimed.isDead()) {
+            return;
+        }
 
         User user = getUser(player);
         if (user.isSpectator()) {
@@ -99,6 +107,8 @@ public class DefuserKit extends PremiumKit implements Listener {
             return;
         }
 
+        tntPrimed.getWorld().spawnParticle(Particle.FALLING_DUST, tntPrimed.getLocation(), 1, 0.2, 0.1, 0.2, data);
+        XSound.BLOCK_FIRE_EXTINGUISH.play(tntPrimed.getLocation());
         tntPrimed.remove();
         user.setCooldown("defuser", MainConfig.KIT_DEFUSER_COOLDOWN.getValue());
     }
