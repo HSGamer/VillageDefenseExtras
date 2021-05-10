@@ -70,7 +70,7 @@ public class AutoLapisEnchantingTableEnhance implements Listener {
         }
         ItemStack itemStack = optionalItemStack.get();
         inventory.setItem(1, itemStack);
-        inventoryMap.put(inventory, itemStack);
+        inventoryMap.put(inventory, itemStack.clone());
     }
 
     @EventHandler
@@ -97,7 +97,7 @@ public class AutoLapisEnchantingTableEnhance implements Listener {
     public void enchantItemEvent(EnchantItemEvent event) {
         Inventory inventory = event.getInventory();
         if (inventoryMap.containsKey(inventory)) {
-            inventory.setItem(1, inventoryMap.get(inventory));
+            inventory.setItem(1, inventoryMap.get(inventory).clone());
         }
     }
 }
