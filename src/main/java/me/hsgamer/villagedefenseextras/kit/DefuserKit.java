@@ -1,6 +1,5 @@
 package me.hsgamer.villagedefenseextras.kit;
 
-import me.hsgamer.hscore.bukkit.utils.MessageUtils;
 import me.hsgamer.villagedefenseextras.VillageDefenseExtras;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
 import me.hsgamer.villagedefenseextras.config.MessageConfig;
@@ -33,8 +32,8 @@ import static plugily.projects.villagedefense.utils.Utils.splitString;
 public class DefuserKit extends PremiumKit implements Listener {
 
     public DefuserKit() {
-        setName(MessageUtils.colorize(MessageConfig.KIT_DEFUSER_NAME.getValue()));
-        List<String> description = splitString(MessageUtils.colorize(MessageConfig.KIT_DEFUSER_DESCRIPTION.getValue()), 40);
+        setName(MessageConfig.KIT_DEFUSER_NAME.getValue());
+        List<String> description = splitString(MessageConfig.KIT_DEFUSER_DESCRIPTION.getValue(), 40);
         setDescription(description.toArray(new String[0]));
         VillageDefenseExtras.getInstance().registerListener(this);
     }
@@ -49,8 +48,8 @@ public class DefuserKit extends PremiumKit implements Listener {
         ArmorHelper.setColouredArmor(Color.RED, player);
         player.getInventory().addItem(WeaponHelper.getUnBreakingSword(WeaponHelper.ResourceType.WOOD, 10));
         player.getInventory().addItem(new ItemBuilder(XMaterial.SHEARS.parseMaterial())
-                .name(MessageUtils.colorize(MessageConfig.KIT_DEFUSER_ITEM_NAME.getValue()))
-                .lore(splitString(MessageUtils.colorize(MessageConfig.KIT_DEFUSER_ITEM_LORE.getValue()), 40))
+                .name(MessageConfig.KIT_DEFUSER_ITEM_NAME.getValue())
+                .lore(splitString(MessageConfig.KIT_DEFUSER_ITEM_LORE.getValue(), 40))
                 .build());
     }
 
@@ -72,7 +71,7 @@ public class DefuserKit extends PremiumKit implements Listener {
         }
 
         ItemStack itemStack = VersionUtils.getItemInHand(player);
-        if (!ItemUtils.isItemStackNamed(itemStack) || !checkDisplayName(itemStack, MessageUtils.colorize(MessageConfig.KIT_DEFUSER_ITEM_NAME.getValue()))) {
+        if (!ItemUtils.isItemStackNamed(itemStack) || !checkDisplayName(itemStack, MessageConfig.KIT_DEFUSER_ITEM_NAME.getValue())) {
             return;
         }
 
