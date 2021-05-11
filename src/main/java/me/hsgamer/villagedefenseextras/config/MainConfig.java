@@ -43,6 +43,8 @@ public class MainConfig extends PathableConfig {
     public static final BooleanConfigPath KIT_DEFUSER_ENABLED = new BooleanConfigPath("kit.defuser.enabled", true);
     public static final IntegerConfigPath KIT_DEFUSER_COOLDOWN = new IntegerConfigPath("kit.defuser.cooldown", 10);
     public static final FloatConfigPath KIT_DEFUSER_FAIL_YIELD_MULTIPLY = new FloatConfigPath("kit.defuser.fail-yield-multiply", 1F);
+    public static final BooleanConfigPath KIT_ANGEL_ENABLED = new BooleanConfigPath("kit.angel.enabled", true);
+    public static final IntegerConfigPath KIT_ANGEL_COOLDOWN = new IntegerConfigPath("kit.angel.cooldown", 180);
 
     public MainConfig(Plugin plugin) {
         super(new BukkitConfig(plugin, "config.yml"));

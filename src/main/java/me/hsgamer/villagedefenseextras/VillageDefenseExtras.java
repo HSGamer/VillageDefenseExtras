@@ -9,6 +9,7 @@ import me.hsgamer.villagedefenseextras.config.MessageConfig;
 import me.hsgamer.villagedefenseextras.enhance.AutoLapisEnchantingTableEnhance;
 import me.hsgamer.villagedefenseextras.enhance.SoundEnhance;
 import me.hsgamer.villagedefenseextras.fix.*;
+import me.hsgamer.villagedefenseextras.kit.AngelKit;
 import me.hsgamer.villagedefenseextras.kit.DefuserKit;
 import me.hsgamer.villagedefenseextras.manager.ExtraZombieManager;
 import me.hsgamer.villagedefenseextras.powerup.LightningStrikePowerUp;
@@ -82,6 +83,9 @@ public final class VillageDefenseExtras extends BasePlugin {
     private void registerKit() {
         if (MainConfig.KIT_DEFUSER_ENABLED.getValue()) {
             KitRegistry.registerKit(new DefuserKit());
+        }
+        if (MainConfig.KIT_ANGEL_ENABLED.getValue()) {
+            KitRegistry.registerKit(new AngelKit());
         }
     }
 
