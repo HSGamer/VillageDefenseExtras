@@ -18,7 +18,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import plugily.projects.villagedefense.Main;
 import plugily.projects.villagedefense.arena.managers.ZombieSpawnManager;
 import plugily.projects.villagedefense.kits.KitRegistry;
-import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.ServerVersion;
 
 public final class VillageDefenseExtras extends BasePlugin {
     private static VillageDefenseExtras instance;

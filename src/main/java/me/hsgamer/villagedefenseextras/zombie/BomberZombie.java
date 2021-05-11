@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.TNTPrimed;
 import org.bukkit.entity.Zombie;
 import org.bukkit.util.Vector;
 import plugily.projects.villagedefense.creatures.CreatureUtils;
@@ -41,9 +42,11 @@ public class BomberZombie implements RunnableZombieSpawner {
                 .add(new Vector(0, y, 0))
                 .normalize()
                 .multiply(power * MainConfig.ZOMBIE_BOMBER_THROW_LENGTH_RATE.getValue());
+        int fuseTicks = MainConfig.ZOMBIE_BOMBER_FUSE_TICKS.getValue();
         Bukkit.getScheduler().runTask(VillageDefenseExtras.getInstance(), () -> {
             Entity entity = eyeLocation.getWorld().spawnEntity(eyeLocation, EntityType.PRIMED_TNT);
             entity.setVelocity(vector);
+            ((TNTPrimed) entity).setFuseTicks(fuseTicks);
         });
     }
 
