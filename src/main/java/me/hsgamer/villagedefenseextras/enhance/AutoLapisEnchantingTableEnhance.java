@@ -44,10 +44,7 @@ public class AutoLapisEnchantingTableEnhance implements Listener {
     @EventHandler
     public void openInventoryEvent(InventoryOpenEvent event) {
         Inventory inventory = event.getInventory();
-        Location location = inventory.getLocation();
-        if (location == null) {
-            return;
-        }
+        Location location = event.getPlayer().getLocation();
         Optional<Arena> optionalArena = Utils.getArena(location);
         if (!optionalArena.isPresent()) {
             return;
