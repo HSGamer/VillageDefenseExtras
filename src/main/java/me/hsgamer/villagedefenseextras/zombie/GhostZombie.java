@@ -3,19 +3,15 @@ package me.hsgamer.villagedefenseextras.zombie;
 import me.hsgamer.villagedefenseextras.api.zombie.RunnableZombieSpawner;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.Particle;
-import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.Zombie;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import plugily.projects.villagedefense.creatures.CreatureUtils;
-import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.xseries.XParticleLegacy;
 
 import java.util.List;
 
 public class GhostZombie implements RunnableZombieSpawner {
-    private final BlockData data = Material.COBBLESTONE.createBlockData();
 
     @Override
     public String getName() {
