@@ -12,10 +12,13 @@ import me.hsgamer.villagedefenseextras.fix.*;
 import me.hsgamer.villagedefenseextras.kit.DefuserKit;
 import me.hsgamer.villagedefenseextras.manager.ExtraZombieManager;
 import me.hsgamer.villagedefenseextras.powerup.LightningStrikePowerUp;
+import me.hsgamer.villagedefenseextras.zombie.BomberZombie;
+import me.hsgamer.villagedefenseextras.zombie.GhostZombie;
 import org.bukkit.plugin.java.JavaPlugin;
 import plugily.projects.villagedefense.Main;
 import plugily.projects.villagedefense.arena.managers.ZombieSpawnManager;
 import plugily.projects.villagedefense.kits.KitRegistry;
+import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.ServerVersion;
 
 public final class VillageDefenseExtras extends BasePlugin {
     private static VillageDefenseExtras instance;
@@ -77,6 +80,9 @@ public final class VillageDefenseExtras extends BasePlugin {
     }
 
     private void registerKit() {
+        if (ServerVersion.Version.isCurrentLower(ServerVersion.Version.v1_9_R1)) {
+            return;
+        }
         if (MainConfig.KIT_DEFUSER_ENABLED.getValue()) {
             KitRegistry.registerKit(new DefuserKit());
         }
@@ -89,6 +95,14 @@ public final class VillageDefenseExtras extends BasePlugin {
     private void registerCommand() {
         registerCommand(new SpawnZombieCommand());
         registerCommand(new SpawnArenaZombieCommand());
+    }
+
+    private void registerZombie() {
+        if (ServerVersion.Version.isCurrentLower(ServerVersion.Version.v1_9_R1)) {
+            return;
+        }
+        extraZombieManager.addZombieSpawner(new GhostZombie());
+        extraZombieManager.addZombieSpawner(new BomberZombie());
     }
 
     public Main getParentPlugin() {

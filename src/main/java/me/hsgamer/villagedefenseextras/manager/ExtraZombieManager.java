@@ -1,8 +1,6 @@
 package me.hsgamer.villagedefenseextras.manager;
 
 import me.hsgamer.villagedefenseextras.api.zombie.ZombieSpawner;
-import me.hsgamer.villagedefenseextras.zombie.BomberZombie;
-import me.hsgamer.villagedefenseextras.zombie.GhostZombie;
 import org.bukkit.Location;
 import plugily.projects.villagedefense.arena.Arena;
 import plugily.projects.villagedefense.arena.managers.CustomZombieSpawnManager;
@@ -16,11 +14,6 @@ import java.util.stream.Collectors;
 
 public class ExtraZombieManager implements CustomZombieSpawnManager {
     private final List<ZombieSpawner> zombieSpawners = new CopyOnWriteArrayList<>();
-
-    public ExtraZombieManager() {
-        addZombieSpawner(new GhostZombie());
-        addZombieSpawner(new BomberZombie());
-    }
 
     @Override
     public void spawnZombie(Random random, Arena arena, int amount) {
