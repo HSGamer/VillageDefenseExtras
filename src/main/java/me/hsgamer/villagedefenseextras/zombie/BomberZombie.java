@@ -32,11 +32,15 @@ public class BomberZombie implements RunnableZombieSpawner {
         if (target == null) {
             return;
         }
+        Location location = zombie.getLocation();
+        double distance = location.distance(target.getLocation());
+        double y = MainConfig.ZOMBIE_BOMBER_THROW_OFFSET_Y.getValue();
+        double power = Math.sqrt(Math.pow(distance / 2, 2) + Math.pow(y, 2));
         Location eyeLocation = zombie.getEyeLocation();
         Vector vector = eyeLocation.getDirection()
-                .add(new Vector(0, MainConfig.ZOMBIE_BOMBER_THROW_OFFSET_Y.getValue(), 0))
+                .add(new Vector(0, y, 0))
                 .normalize()
-                .multiply(MainConfig.ZOMBIE_BOMBER_THROW_LENGTH.getValue());
+                .multiply(power * MainConfig.ZOMBIE_BOMBER_THROW_LENGTH_RATE.getValue());
         Bukkit.getScheduler().runTask(VillageDefenseExtras.getInstance(), () -> {
             Entity entity = eyeLocation.getWorld().spawnEntity(eyeLocation, EntityType.PRIMED_TNT);
             entity.setVelocity(vector);
