@@ -15,8 +15,6 @@ import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.xs
 
 import java.util.List;
 
-import static java.util.concurrent.ThreadLocalRandom.current;
-
 public class BomberZombie implements RunnableZombieSpawner {
     @Override
     public Zombie createBaseZombie(Location location) {
@@ -42,7 +40,7 @@ public class BomberZombie implements RunnableZombieSpawner {
         Vector vector = eyeLocation.getDirection()
                 .add(new Vector(0, y, 0))
                 .normalize()
-                .multiply(power * current().nextDouble(MainConfig.ZOMBIE_BOMBER_THROW_LENGTH_RATE.getValue()));
+                .multiply(power * MainConfig.ZOMBIE_BOMBER_THROW_LENGTH_RATE.getValue());
         Bukkit.getScheduler().runTask(VillageDefenseExtras.getInstance(), () -> {
             Entity entity = eyeLocation.getWorld().spawnEntity(eyeLocation, EntityType.PRIMED_TNT);
             entity.setVelocity(vector);
