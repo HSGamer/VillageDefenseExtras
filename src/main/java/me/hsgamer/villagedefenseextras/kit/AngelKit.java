@@ -83,7 +83,11 @@ public class AngelKit extends PremiumKit implements Listener {
         }
 
         if (!(user.getKit() instanceof AngelKit)) {
-            arena.getPlayersLeft().forEach(player1 -> player1.setHealth(0));
+            arena.getPlayersLeft().forEach(player1 -> {
+                Location location = player1.getLocation();
+                location.getWorld().strikeLightningEffect(location);
+                player1.setHealth(0);
+            });
             return;
         }
 
