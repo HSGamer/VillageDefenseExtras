@@ -3,7 +3,6 @@ package me.hsgamer.villagedefenseextras.zombie;
 import me.hsgamer.villagedefenseextras.api.zombie.RunnableZombieSpawner;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
 import org.bukkit.Location;
-import org.bukkit.entity.Player;
 import org.bukkit.entity.Zombie;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -11,7 +10,6 @@ import plugily.projects.villagedefense.creatures.CreatureUtils;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.VersionUtils;
 
 import java.util.List;
-import java.util.Set;
 
 public class GhostZombie implements RunnableZombieSpawner {
 
@@ -50,7 +48,8 @@ public class GhostZombie implements RunnableZombieSpawner {
     @Override
     public void onTick(Zombie zombie) {
         VersionUtils.sendParticles("SMOKE_NORMAL", null, zombie.getEyeLocation(), 1, 0.2, 0.1, 0.2);
-        VersionUtils.sendParticles("DRIP_LAVA", (Set<Player>) null, zombie.getLocation(), 0);
+        VersionUtils.sendParticles("SMOKE_NORMAL", null, zombie.getLocation(), 1, 0.2, 0.1, 0.2);
+        VersionUtils.sendParticles("DRIP_LAVA", null, zombie.getLocation(), 0, 0.0D, 0.0D, 0.0D);
     }
 
     @Override
