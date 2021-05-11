@@ -51,7 +51,7 @@ public class GhostZombie implements RunnableZombieSpawner {
     @Override
     public void onTick(Zombie zombie) {
         Location eyeLocation = zombie.getEyeLocation();
-        eyeLocation.getWorld().spawnParticle(Particle.FALLING_DUST, eyeLocation, 1, 0.2, 0.1, 0.2, data);
+        eyeLocation.getWorld().spawnParticle(Particle.SMOKE_NORMAL, eyeLocation, 1, 0.2, 0.1, 0.2);
         Location location = zombie.getLocation();
         location.getWorld().spawnParticle(Particle.DRIP_LAVA, location, 0);
     }
