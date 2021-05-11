@@ -20,7 +20,7 @@ import java.util.Optional;
 public class SpawnZombieCommand extends Command {
 
     public SpawnZombieCommand() {
-        super("spawnzombie", "Spawn a zombie", "/<command> <zombie_name>", Collections.emptyList());
+        super("spawnzombie", "Spawn a zombie", "/spawnzombie <zombie_name>", Collections.emptyList());
         Permission permission = new Permission("vdextra.spawnzombie", PermissionDefault.OP);
         setPermission(permission.getName());
     }
