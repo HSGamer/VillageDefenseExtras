@@ -15,6 +15,8 @@ import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.xs
 
 import java.util.List;
 
+import static java.util.concurrent.ThreadLocalRandom.current;
+
 public class BomberZombie implements RunnableZombieSpawner {
     @Override
     public Zombie createBaseZombie(Location location) {
@@ -35,12 +37,12 @@ public class BomberZombie implements RunnableZombieSpawner {
         Location location = zombie.getLocation();
         double distance = location.distance(target.getLocation());
         double y = MainConfig.ZOMBIE_BOMBER_THROW_OFFSET_Y.getValue();
-        double power = Math.sqrt(Math.pow(distance / 2, 2) + Math.pow(y, 2));
+        double power = Math.sqrt(Math.pow(distance / 2, 2) + Math.pow(y, 2)) / MainConfig.ZOMBIE_BOMBER_THROW_POWER_DIVIDER.getValue();
         Location eyeLocation = zombie.getEyeLocation();
         Vector vector = eyeLocation.getDirection()
                 .add(new Vector(0, y, 0))
                 .normalize()
-                .multiply(power * MainConfig.ZOMBIE_BOMBER_THROW_LENGTH_RATE.getValue());
+                .multiply(power * current().nextDouble(MainConfig.ZOMBIE_BOMBER_THROW_LENGTH_RATE.getValue()));
         Bukkit.getScheduler().runTask(VillageDefenseExtras.getInstance(), () -> {
             Entity entity = eyeLocation.getWorld().spawnEntity(eyeLocation, EntityType.PRIMED_TNT);
             entity.setVelocity(vector);

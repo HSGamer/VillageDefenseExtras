@@ -33,6 +33,7 @@ public class MainConfig extends PathableConfig {
     public static final IntegerConfigPath ZOMBIE_BOMBER_WAVE = new IntegerConfigPath("zombie.bomber.wave", 10);
     public static final IntegerConfigPath ZOMBIE_BOMBER_AMOUNT = new IntegerConfigPath("zombie.bomber.amount", 10);
     public static final DoubleConfigPath ZOMBIE_BOMBER_RATE = new DoubleConfigPath("zombie.bomber.rate", 0.2);
+    public static final DoubleConfigPath ZOMBIE_BOMBER_THROW_POWER_DIVIDER = new DoubleConfigPath("zombie.bomber.throw-power-divider", 5D);
     public static final DoubleConfigPath ZOMBIE_BOMBER_THROW_LENGTH_RATE = new DoubleConfigPath("zombie.bomber.throw-length-rate", 0.7);
     public static final DoubleConfigPath ZOMBIE_BOMBER_THROW_OFFSET_Y = new DoubleConfigPath("zombie.bomber.throw-offset-y", 1.5D);
     public static final LongConfigPath ZOMBIE_BOMBER_THROW_DELAY = new LongConfigPath("zombie.bomber.throw-delay", 40L);
