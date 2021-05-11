@@ -54,6 +54,7 @@ public final class VillageDefenseExtras extends BasePlugin {
         registerPowerUp();
         registerEnhance();
         registerKit();
+        registerZombie();
         registerCommand();
 
         ZombieSpawnManager.CUSTOM_ZOMBIE_SPAWN_MANAGERS.add(extraZombieManager);
@@ -80,9 +81,6 @@ public final class VillageDefenseExtras extends BasePlugin {
     }
 
     private void registerKit() {
-        if (ServerVersion.Version.isCurrentLower(ServerVersion.Version.v1_9_R1)) {
-            return;
-        }
         if (MainConfig.KIT_DEFUSER_ENABLED.getValue()) {
             KitRegistry.registerKit(new DefuserKit());
         }
@@ -98,9 +96,6 @@ public final class VillageDefenseExtras extends BasePlugin {
     }
 
     private void registerZombie() {
-        if (ServerVersion.Version.isCurrentLower(ServerVersion.Version.v1_9_R1)) {
-            return;
-        }
         extraZombieManager.addZombieSpawner(new GhostZombie());
         extraZombieManager.addZombieSpawner(new BomberZombie());
     }

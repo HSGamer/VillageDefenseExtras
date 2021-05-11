@@ -6,8 +6,6 @@ import me.hsgamer.villagedefenseextras.config.MainConfig;
 import me.hsgamer.villagedefenseextras.config.MessageConfig;
 import org.bukkit.Color;
 import org.bukkit.Material;
-import org.bukkit.Particle;
-import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TNTPrimed;
@@ -105,8 +103,8 @@ public class DefuserKit extends PremiumKit implements Listener {
             return;
         }
 
-        tntPrimed.getWorld().spawnParticle(Particle.LAVA, tntPrimed.getLocation(), 20, 0.5, 0.5, 0.5);
-        tntPrimed.getWorld().spawnParticle(Particle.DRIP_LAVA, tntPrimed.getLocation(), 20, 0.5, 0.5, 0.5);
+        VersionUtils.sendParticles("DRIP_LAVA", null, tntPrimed.getLocation(), 20, 0.5, 0.5, 0.5);
+        VersionUtils.sendParticles("LAVA", null, tntPrimed.getLocation(), 20, 0.5, 0.5, 0.5);
         XSound.BLOCK_FIRE_EXTINGUISH.play(tntPrimed.getLocation());
         tntPrimed.remove();
         user.setCooldown("defuser", MainConfig.KIT_DEFUSER_COOLDOWN.getValue());
