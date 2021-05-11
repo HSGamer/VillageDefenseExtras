@@ -6,6 +6,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.enchantment.EnchantItemEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
@@ -42,7 +43,7 @@ public class AutoLapisEnchantingTableEnhance implements Listener {
     }
 
     @EventHandler
-    public void openInventoryEvent(InventoryOpenEvent event) {
+    public void onOpen(InventoryOpenEvent event) {
         Inventory inventory = event.getInventory();
         Location location = event.getPlayer().getLocation();
         Optional<Arena> optionalArena = Utils.getArena(location);
@@ -70,7 +71,7 @@ public class AutoLapisEnchantingTableEnhance implements Listener {
     }
 
     @EventHandler
-    public void closeInventoryEvent(InventoryCloseEvent event) {
+    public void onClose(InventoryCloseEvent event) {
         Inventory inventory = event.getInventory();
         if (inventory.getViewers().size() > 1) {
             return;
@@ -82,13 +83,22 @@ public class AutoLapisEnchantingTableEnhance implements Listener {
     }
 
     @EventHandler
-    public void inventoryClickEvent(InventoryClickEvent event) {
+    public void onClick(InventoryClickEvent event) {
         Inventory inventory = event.getClickedInventory();
         if (inventory == null) {
             return;
         }
         if (inventoryMap.containsKey(inventory) && event.getSlot() == 1) {
             event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onEnchant(EnchantItemEvent event) {
+        Inventory inventory = event.getInventory();
+        if (inventoryMap.containsKey(inventory)) {
+            inventory.setItem(1, null);
+            inventory.setItem(1, inventoryMap.get(inventory));
         }
     }
 }
