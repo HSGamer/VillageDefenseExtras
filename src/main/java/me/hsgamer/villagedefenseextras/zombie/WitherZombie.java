@@ -29,10 +29,11 @@ public class WitherZombie implements RunnableZombieSpawner {
             return;
         }
         Location location = zombie.getLocation();
-        Vector vector = location.getDirection().multiply(MainConfig.ZOMBIE_WITHER_SHOOT_POWER.getValue());
+        Vector direction = location.getDirection().multiply(2.2);
+        Vector power = location.getDirection().multiply(MainConfig.ZOMBIE_WITHER_SHOOT_POWER.getValue());
         Bukkit.getScheduler().runTask(VillageDefenseExtras.getInstance(), () -> {
-            Entity entity = location.getWorld().spawnEntity(location, EntityType.WITHER_SKULL);
-            entity.setVelocity(vector);
+            Entity entity = location.getWorld().spawnEntity(location.setDirection(direction), EntityType.WITHER_SKULL);
+            entity.setVelocity(power);
         });
     }
 
