@@ -26,6 +26,10 @@ public interface ZombieSpawner {
 
     Zombie spawnZombie(Location location);
 
+    default int getSpawnWeight() {
+        return 1;
+    }
+
     default void spawnZombie(Location location, Arena arena) {
         Zombie zombie = spawnZombie(location);
         CreatureUtils.applyAttributes(zombie, arena);
