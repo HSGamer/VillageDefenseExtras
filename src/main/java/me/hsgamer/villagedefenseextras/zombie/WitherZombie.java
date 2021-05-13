@@ -29,7 +29,11 @@ public class WitherZombie implements RunnableZombieSpawner {
         }
         Location location = zombie.getLocation();
         Vector power = location.getDirection().multiply(MainConfig.ZOMBIE_WITHER_SHOOT_POWER.getValue());
-        Bukkit.getScheduler().runTask(VillageDefenseExtras.getInstance(), () -> zombie.launchProjectile(WitherSkull.class, power));
+        boolean charged = MainConfig.ZOMBIE_WITHER_CHARGED.getValue();
+        Bukkit.getScheduler().runTask(VillageDefenseExtras.getInstance(), () -> {
+            WitherSkull skull = zombie.launchProjectile(WitherSkull.class, power);
+            skull.setCharged(charged);
+        });
     }
 
     @Override
