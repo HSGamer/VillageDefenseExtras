@@ -19,6 +19,7 @@ import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.Ve
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.events.api.CBPlayerInteractEvent;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.xseries.XMaterial;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.helper.ArmorHelper;
+import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.helper.WeaponHelper;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.item.ItemBuilder;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.item.ItemUtils;
 import plugily.projects.villagedefense.user.User;
@@ -45,6 +46,7 @@ public class AngelKit extends PremiumKit implements Listener {
     @Override
     public void giveKitItems(Player player) {
         ArmorHelper.setColouredArmor(Color.GRAY, player);
+        player.getInventory().addItem(WeaponHelper.getUnBreakingSword(WeaponHelper.ResourceType.WOOD, 10));
         player.getInventory().addItem(new ItemBuilder(XMaterial.FEATHER.parseMaterial())
                 .name(MessageConfig.KIT_ANGEL_ITEM_NAME.getValue())
                 .lore(splitString(MessageConfig.KIT_ANGEL_ITEM_LORE.getValue(), 40))

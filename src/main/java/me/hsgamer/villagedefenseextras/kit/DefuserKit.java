@@ -3,7 +3,6 @@ package me.hsgamer.villagedefenseextras.kit;
 import me.hsgamer.villagedefenseextras.VillageDefenseExtras;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
 import me.hsgamer.villagedefenseextras.config.MessageConfig;
-import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -45,7 +44,7 @@ public class DefuserKit extends PremiumKit implements Listener {
 
     @Override
     public void giveKitItems(Player player) {
-        ArmorHelper.setColouredArmor(Color.RED, player);
+        ArmorHelper.setArmor(player, ArmorHelper.ArmorType.IRON);
         player.getInventory().addItem(WeaponHelper.getUnBreakingSword(WeaponHelper.ResourceType.WOOD, 10));
         player.getInventory().addItem(new ItemBuilder(XMaterial.SHEARS.parseMaterial())
                 .name(MessageConfig.KIT_DEFUSER_ITEM_NAME.getValue())
