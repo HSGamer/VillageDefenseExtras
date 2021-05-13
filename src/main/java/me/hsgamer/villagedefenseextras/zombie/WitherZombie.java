@@ -5,8 +5,7 @@ import me.hsgamer.villagedefenseextras.api.zombie.RunnableZombieSpawner;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
+import org.bukkit.entity.WitherSkull;
 import org.bukkit.entity.Zombie;
 import org.bukkit.util.Vector;
 import plugily.projects.villagedefense.creatures.CreatureUtils;
@@ -29,12 +28,8 @@ public class WitherZombie implements RunnableZombieSpawner {
             return;
         }
         Location location = zombie.getLocation();
-        Vector direction = location.getDirection().multiply(2.2);
         Vector power = location.getDirection().multiply(MainConfig.ZOMBIE_WITHER_SHOOT_POWER.getValue());
-        Bukkit.getScheduler().runTask(VillageDefenseExtras.getInstance(), () -> {
-            Entity entity = location.getWorld().spawnEntity(location.setDirection(direction), EntityType.WITHER_SKULL);
-            entity.setVelocity(power);
-        });
+        Bukkit.getScheduler().runTask(VillageDefenseExtras.getInstance(), () -> zombie.launchProjectile(WitherSkull.class, power));
     }
 
     @Override
