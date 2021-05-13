@@ -8,6 +8,7 @@ import me.hsgamer.villagedefenseextras.config.MainConfig;
 import me.hsgamer.villagedefenseextras.config.MessageConfig;
 import me.hsgamer.villagedefenseextras.enhance.AutoLapisEnchantingTableEnhance;
 import me.hsgamer.villagedefenseextras.enhance.SoundEnhance;
+import me.hsgamer.villagedefenseextras.enhance.VillagerProfessionEnhance;
 import me.hsgamer.villagedefenseextras.fix.*;
 import me.hsgamer.villagedefenseextras.kit.AngelKit;
 import me.hsgamer.villagedefenseextras.kit.DefuserKit;
@@ -79,6 +80,7 @@ public final class VillageDefenseExtras extends BasePlugin {
     private void registerEnhance() {
         registerListener(new AutoLapisEnchantingTableEnhance());
         registerListener(new SoundEnhance());
+        registerListener(new VillagerProfessionEnhance());
     }
 
     private void registerKit() {
