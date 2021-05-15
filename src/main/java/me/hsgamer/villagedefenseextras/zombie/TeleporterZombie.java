@@ -5,6 +5,8 @@ import me.hsgamer.villagedefenseextras.api.zombie.RunnableZombieSpawner;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Zombie;
 import plugily.projects.villagedefense.creatures.CreatureUtils;
@@ -34,6 +36,11 @@ public class TeleporterZombie implements RunnableZombieSpawner {
         location = location.subtract(target.getEyeLocation().getDirection().multiply(MainConfig.ZOMBIE_TELEPORTER_DISTANCE.getValue()));
         location.setY(y + 0.25);
         Location finalLocation = location;
+        Block block = finalLocation.getBlock();
+        Block block2 = finalLocation.add(0, 1, 0).getBlock();
+        if (block.getType() != Material.AIR || block2.getType() != Material.AIR) {
+            return;
+        }
         XSound.ENTITY_ENDERMAN_TELEPORT.play(zombie.getLocation());
         VersionUtils.sendParticles("PORTAL", null, zombie.getLocation(), 20, 0.5D, 0.5D, 0.5D);
         VersionUtils.sendParticles("PORTAL", null, finalLocation, 20, 0.5D, 0.5D, 0.5D);
