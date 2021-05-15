@@ -8,6 +8,7 @@ import org.bukkit.entity.Zombie;
 import plugily.projects.villagedefense.creatures.CreatureUtils;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.VersionUtils;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.xseries.XMaterial;
+import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.xseries.XSound;
 
 import java.util.List;
 
@@ -31,6 +32,8 @@ public class TeleporterZombie implements RunnableZombieSpawner {
         location = location.subtract(target.getEyeLocation().getDirection().multiply(MainConfig.ZOMBIE_TELEPORTER_DISTANCE.getValue()));
         location.setY(y + 0.25);
         Location finalLocation = location;
+        XSound.ENTITY_ENDERMAN_TELEPORT.play(zombie.getLocation());
+        VersionUtils.sendParticles("PORTAL", null, zombie.getLocation(), 20, 0.5D, 0.5D, 0.5D);
         zombie.teleport(finalLocation);
     }
 
