@@ -19,7 +19,7 @@ public class GhostZombie implements RunnableZombieSpawner {
     }
 
     @Override
-    public int getSpawnWave() {
+    public int getMinWave() {
         return MainConfig.ZOMBIE_GHOST_WAVE.getValue();
     }
 

@@ -76,7 +76,7 @@ public class BomberZombie implements RunnableZombieSpawner {
     }
 
     @Override
-    public int getSpawnWave() {
+    public int getMinWave() {
         return MainConfig.ZOMBIE_BOMBER_WAVE.getValue();
     }
 

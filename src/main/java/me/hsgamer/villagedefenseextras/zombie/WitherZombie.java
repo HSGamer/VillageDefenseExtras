@@ -52,7 +52,7 @@ public class WitherZombie implements RunnableZombieSpawner {
     }
 
     @Override
-    public int getSpawnWave() {
+    public int getMinWave() {
         return MainConfig.ZOMBIE_WITHER_WAVE.getValue();
     }
 

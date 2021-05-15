@@ -20,7 +20,12 @@ public class ExtraZombieManager implements CustomZombieSpawnManager {
         int wave = arena.getWave();
         int phase = arena.getOption(ArenaOption.ZOMBIE_SPAWN_COUNTER);
         for (ZombieSpawner zombieSpawner : zombieSpawners) {
-            if (wave < zombieSpawner.getSpawnWave() || !zombieSpawner.getSpawnPhases().contains(phase)) {
+            if (!zombieSpawner.getSpawnPhases().contains(phase)) {
+                continue;
+            }
+            int minWave = zombieSpawner.getMinWave();
+            int maxWave = zombieSpawner.getMaxWave();
+            if (wave < minWave || (maxWave > 0 || wave > maxWave)) {
                 continue;
             }
             int spawnAmount = zombieSpawner.getFinalAmount(amount);

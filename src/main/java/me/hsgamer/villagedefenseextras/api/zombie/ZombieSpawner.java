@@ -14,7 +14,11 @@ public interface ZombieSpawner {
 
     String getName();
 
-    int getSpawnWave();
+    int getMinWave();
+
+    default int getMaxWave() {
+        return -1;
+    }
 
     double getSpawnRate();
 
