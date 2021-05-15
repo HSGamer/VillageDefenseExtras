@@ -1,11 +1,9 @@
 package me.hsgamer.villagedefenseextras.zombie;
 
-import me.hsgamer.villagedefenseextras.VillageDefenseExtras;
 import me.hsgamer.villagedefenseextras.api.zombie.RunnableZombieSpawner;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Zombie;
 import plugily.projects.villagedefense.creatures.CreatureUtils;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.VersionUtils;
@@ -24,15 +22,16 @@ public class TeleporterZombie implements RunnableZombieSpawner {
 
     @Override
     public void onTick(Zombie zombie) {
-        Entity target = zombie.getTarget();
+        LivingEntity target = zombie.getTarget();
         if (target == null) {
             return;
         }
         Location location = target.getLocation();
-        location = location.subtract(location.getDirection().multiply(MainConfig.ZOMBIE_TELEPORTER_DISTANCE.getValue()));
-        location.setY(0.5);
+        double y = location.getY();
+        location = location.subtract(target.getEyeLocation().getDirection().multiply(MainConfig.ZOMBIE_TELEPORTER_DISTANCE.getValue()));
+        location.setY(y + 0.25);
         Location finalLocation = location;
-        Bukkit.getScheduler().runTask(VillageDefenseExtras.getInstance(), () -> zombie.teleport(finalLocation));
+        zombie.teleport(finalLocation);
     }
 
     @Override
