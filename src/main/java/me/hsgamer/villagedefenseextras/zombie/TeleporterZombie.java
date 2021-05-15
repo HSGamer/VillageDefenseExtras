@@ -1,7 +1,9 @@
 package me.hsgamer.villagedefenseextras.zombie;
 
+import me.hsgamer.villagedefenseextras.VillageDefenseExtras;
 import me.hsgamer.villagedefenseextras.api.zombie.RunnableZombieSpawner;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Zombie;
@@ -34,7 +36,8 @@ public class TeleporterZombie implements RunnableZombieSpawner {
         Location finalLocation = location;
         XSound.ENTITY_ENDERMAN_TELEPORT.play(zombie.getLocation());
         VersionUtils.sendParticles("PORTAL", null, zombie.getLocation(), 20, 0.5D, 0.5D, 0.5D);
-        zombie.teleport(finalLocation);
+        VersionUtils.sendParticles("PORTAL", null, finalLocation, 20, 0.5D, 0.5D, 0.5D);
+        Bukkit.getScheduler().runTask(VillageDefenseExtras.getInstance(), () -> zombie.teleport(finalLocation));
     }
 
     @Override
