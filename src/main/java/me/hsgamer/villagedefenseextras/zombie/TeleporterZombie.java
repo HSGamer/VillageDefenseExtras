@@ -1,7 +1,9 @@
 package me.hsgamer.villagedefenseextras.zombie;
 
+import me.hsgamer.villagedefenseextras.VillageDefenseExtras;
 import me.hsgamer.villagedefenseextras.api.zombie.RunnableZombieSpawner;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Zombie;
@@ -29,7 +31,8 @@ public class TeleporterZombie implements RunnableZombieSpawner {
         Location location = target.getLocation();
         location = location.subtract(location.getDirection().multiply(MainConfig.ZOMBIE_TELEPORTER_DISTANCE.getValue()));
         location.setY(0.5);
-        zombie.teleport(location);
+        Location finalLocation = location;
+        Bukkit.getScheduler().runTask(VillageDefenseExtras.getInstance(), () -> zombie.teleport(finalLocation));
     }
 
     @Override
