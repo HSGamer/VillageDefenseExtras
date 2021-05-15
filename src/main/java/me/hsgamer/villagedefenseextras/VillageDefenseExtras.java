@@ -15,6 +15,7 @@ import me.hsgamer.villagedefenseextras.manager.ExtraZombieManager;
 import me.hsgamer.villagedefenseextras.powerup.LightningStrikePowerUp;
 import me.hsgamer.villagedefenseextras.zombie.BomberZombie;
 import me.hsgamer.villagedefenseextras.zombie.GhostZombie;
+import me.hsgamer.villagedefenseextras.zombie.TeleporterZombie;
 import me.hsgamer.villagedefenseextras.zombie.WitherZombie;
 import org.bukkit.plugin.java.JavaPlugin;
 import plugily.projects.villagedefense.Main;
@@ -103,6 +104,7 @@ public final class VillageDefenseExtras extends BasePlugin {
         extraZombieManager.addZombieSpawner(new GhostZombie());
         extraZombieManager.addZombieSpawner(new BomberZombie());
         extraZombieManager.addZombieSpawner(new WitherZombie());
+        extraZombieManager.addZombieSpawner(new TeleporterZombie());
     }
 
     public Main getParentPlugin() {

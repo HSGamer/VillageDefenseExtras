@@ -46,6 +46,12 @@ public class MainConfig extends PathableConfig {
     public static final LongConfigPath ZOMBIE_WITHER_SHOOT_DELAY = new LongConfigPath("zombie.wither.shoot-delay", 40L);
     public static final DoubleConfigPath ZOMBIE_WITHER_SHOOT_POWER = new DoubleConfigPath("zombie.wither.shoot-power", 1.5D);
     public static final BooleanConfigPath ZOMBIE_WITHER_CHARGED = new BooleanConfigPath("zombie.wither.charged", true);
+    public static final IntegerConfigPath ZOMBIE_TELEPORTER_WAVE = new IntegerConfigPath("zombie.teleport.wave", 10);
+    public static final IntegerConfigPath ZOMBIE_TELEPORTER_AMOUNT = new IntegerConfigPath("zombie.teleport.amount", 10);
+    public static final DoubleConfigPath ZOMBIE_TELEPORTER_RATE = new DoubleConfigPath("zombie.teleport.rate", 0.2);
+    public static final SimpleConfigPath<List<Integer>> ZOMBIE_TELEPORTER_PHASE = new SimpleConfigPath<>("zombie.teleport.phase", IntStream.range(3, 5).boxed().collect(Collectors.toList()));
+    public static final LongConfigPath ZOMBIE_TELEPORTER_TELEPORT_DELAY = new LongConfigPath("zombie.teleport.teleport-delay", 40L);
+    public static final DoubleConfigPath ZOMBIE_TELEPORTER_DISTANCE = new DoubleConfigPath("zombie.teleport.distance", 2D);
 
     public static final BooleanConfigPath KIT_DEFUSER_ENABLED = new BooleanConfigPath("kit.defuser.enabled", true);
     public static final IntegerConfigPath KIT_DEFUSER_COOLDOWN = new IntegerConfigPath("kit.defuser.cooldown", 10);
