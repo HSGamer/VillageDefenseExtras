@@ -47,7 +47,7 @@ public class WitherZombie implements RunnableZombieSpawner {
 
     @Override
     public String getName() {
-        return "WITHER_ZOMBIE";
+        return "WitherZombie";
     }
 
     @Override
