@@ -11,7 +11,6 @@ import me.hsgamer.villagedefenseextras.enhance.SoundEnhance;
 import me.hsgamer.villagedefenseextras.fix.*;
 import me.hsgamer.villagedefenseextras.kit.AngelKit;
 import me.hsgamer.villagedefenseextras.kit.DefuserKit;
-import me.hsgamer.villagedefenseextras.manager.ExtraZombieManager;
 import me.hsgamer.villagedefenseextras.powerup.LightningStrikePowerUp;
 import me.hsgamer.villagedefenseextras.zombie.BomberZombie;
 import me.hsgamer.villagedefenseextras.zombie.GhostZombie;
@@ -19,15 +18,17 @@ import me.hsgamer.villagedefenseextras.zombie.TeleporterZombie;
 import me.hsgamer.villagedefenseextras.zombie.WitherZombie;
 import org.bukkit.plugin.java.JavaPlugin;
 import plugily.projects.villagedefense.Main;
-import plugily.projects.villagedefense.arena.managers.ZombieSpawnManager;
+import plugily.projects.villagedefense.arena.managers.ZombieSpawnerRegistry;
+import plugily.projects.villagedefense.arena.managers.spawner.ZombieSpawner;
 import plugily.projects.villagedefense.kits.KitRegistry;
+
+import java.util.List;
 
 public final class VillageDefenseExtras extends BasePlugin {
     private static VillageDefenseExtras instance;
 
     private final MainConfig mainConfig = new MainConfig(this);
     private final MessageConfig messageConfig = new MessageConfig(this);
-    private final ExtraZombieManager extraZombieManager = new ExtraZombieManager();
 
     private Main parentPlugin;
 
@@ -58,14 +59,6 @@ public final class VillageDefenseExtras extends BasePlugin {
         registerKit();
         registerZombie();
         registerCommand();
-
-        ZombieSpawnManager.CUSTOM_ZOMBIE_SPAWN_MANAGERS.add(extraZombieManager);
-    }
-
-    @Override
-    public void disable() {
-        ZombieSpawnManager.CUSTOM_ZOMBIE_SPAWN_MANAGERS.remove(extraZombieManager);
-        extraZombieManager.clearAll();
     }
 
     private void registerFix() {
@@ -101,10 +94,12 @@ public final class VillageDefenseExtras extends BasePlugin {
     }
 
     private void registerZombie() {
-        extraZombieManager.addZombieSpawner(new GhostZombie());
-        extraZombieManager.addZombieSpawner(new BomberZombie());
-        extraZombieManager.addZombieSpawner(new WitherZombie());
-        extraZombieManager.addZombieSpawner(new TeleporterZombie());
+        ZombieSpawnerRegistry spawnerRegistry = parentPlugin.getZombieSpawnerRegistry();
+        List<ZombieSpawner> zombieSpawnerList = spawnerRegistry.getZombieSpawnerList();
+        zombieSpawnerList.add(new GhostZombie());
+        zombieSpawnerList.add(new BomberZombie());
+        zombieSpawnerList.add(new WitherZombie());
+        zombieSpawnerList.add(new TeleporterZombie());
     }
 
     public Main getParentPlugin() {
@@ -117,9 +112,5 @@ public final class VillageDefenseExtras extends BasePlugin {
 
     public MessageConfig getMessageConfig() {
         return messageConfig;
-    }
-
-    public ExtraZombieManager getExtraZombieManager() {
-        return extraZombieManager;
     }
 }

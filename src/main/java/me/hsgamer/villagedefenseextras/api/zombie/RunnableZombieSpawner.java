@@ -3,10 +3,11 @@ package me.hsgamer.villagedefenseextras.api.zombie;
 import org.bukkit.Location;
 import org.bukkit.entity.Zombie;
 import org.bukkit.scheduler.BukkitRunnable;
+import plugily.projects.villagedefense.arena.managers.spawner.SimpleZombieSpawner;
 
 import static me.hsgamer.villagedefenseextras.VillageDefenseExtras.getInstance;
 
-public interface RunnableZombieSpawner extends ZombieSpawner {
+public interface RunnableZombieSpawner extends SimpleZombieSpawner {
     Zombie createBaseZombie(Location location);
 
     void onTick(Zombie zombie);

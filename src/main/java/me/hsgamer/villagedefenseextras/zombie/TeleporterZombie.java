@@ -9,12 +9,11 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Zombie;
+import plugily.projects.villagedefense.arena.Arena;
 import plugily.projects.villagedefense.creatures.CreatureUtils;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.VersionUtils;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.xseries.XMaterial;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.xseries.XSound;
-
-import java.util.List;
 
 public class TeleporterZombie implements RunnableZombieSpawner {
     @Override
@@ -59,7 +58,7 @@ public class TeleporterZombie implements RunnableZombieSpawner {
 
     @Override
     public String getName() {
-        return "TELEPORTER_ZOMBIE";
+        return "TeleporterZombie";
     }
 
     @Override
@@ -68,17 +67,17 @@ public class TeleporterZombie implements RunnableZombieSpawner {
     }
 
     @Override
-    public double getSpawnRate() {
+    public double getSpawnRate(Arena arena, int wave, int phase, int spawnAmount) {
         return MainConfig.ZOMBIE_TELEPORTER_RATE.getValue();
     }
 
     @Override
-    public List<Integer> getSpawnPhases() {
-        return MainConfig.ZOMBIE_TELEPORTER_PHASE.getValue();
+    public int getFinalAmount(Arena arena, int wave, int phase, int spawnAmount) {
+        return Math.min(spawnAmount, MainConfig.ZOMBIE_TELEPORTER_AMOUNT.getValue());
     }
 
     @Override
-    public int getFinalAmount(int spawnAmount) {
-        return Math.min(spawnAmount, MainConfig.ZOMBIE_TELEPORTER_AMOUNT.getValue());
+    public boolean checkPhase(Arena arena, int wave, int phase, int spawnAmount) {
+        return MainConfig.ZOMBIE_TELEPORTER_PHASE.getValue().contains(phase);
     }
 }

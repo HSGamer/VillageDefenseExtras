@@ -88,33 +88,33 @@
         <dependency>
             <groupId>plugily.projects</groupId>
             <artifactId>villagedefense</artifactId>
-            <version>4.5.9-dev2-debug</version>
+            <version>4.5.9-b1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>me.HSGamer</groupId>
             <artifactId>HSCore-common</artifactId>
-            <version>3.3</version>
+            <version>3.4</version>
         </dependency>
         <dependency>
             <groupId>me.HSGamer</groupId>
             <artifactId>HSCore-bukkit-baseplugin</artifactId>
-            <version>3.3</version>
+            <version>3.4</version>
         </dependency>
         <dependency>
             <groupId>me.HSGamer</groupId>
             <artifactId>HSCore-bukkit-utils</artifactId>
-            <version>3.3</version>
+            <version>3.4</version>
         </dependency>
         <dependency>
             <groupId>me.HSGamer</groupId>
             <artifactId>HSCore-bukkit-config</artifactId>
-            <version>3.3</version>
+            <version>3.4</version>
         </dependency>
         <dependency>
             <groupId>me.HSGamer</groupId>
             <artifactId>HSCore-config-path</artifactId>
-            <version>3.3</version>
+            <version>3.4</version>
         </dependency>
     </dependencies>
 </project>

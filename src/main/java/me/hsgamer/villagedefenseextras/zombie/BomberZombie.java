@@ -10,11 +10,10 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.TNTPrimed;
 import org.bukkit.entity.Zombie;
 import org.bukkit.util.Vector;
+import plugily.projects.villagedefense.arena.Arena;
 import plugily.projects.villagedefense.creatures.CreatureUtils;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.VersionUtils;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.xseries.XMaterial;
-
-import java.util.List;
 
 public class BomberZombie implements RunnableZombieSpawner {
     @Override
@@ -67,12 +66,7 @@ public class BomberZombie implements RunnableZombieSpawner {
 
     @Override
     public String getName() {
-        return "BOMBER_ZOMBIE";
-    }
-
-    @Override
-    public int getFinalAmount(int spawnAmount) {
-        return Math.min(spawnAmount, MainConfig.ZOMBIE_BOMBER_AMOUNT.getValue());
+        return "BomberZombie";
     }
 
     @Override
@@ -81,12 +75,17 @@ public class BomberZombie implements RunnableZombieSpawner {
     }
 
     @Override
-    public double getSpawnRate() {
+    public double getSpawnRate(Arena arena, int wave, int phase, int spawnAmount) {
         return MainConfig.ZOMBIE_BOMBER_RATE.getValue();
     }
 
     @Override
-    public List<Integer> getSpawnPhases() {
-        return MainConfig.ZOMBIE_BOMBER_PHASE.getValue();
+    public int getFinalAmount(Arena arena, int wave, int phase, int spawnAmount) {
+        return Math.min(spawnAmount, MainConfig.ZOMBIE_BOMBER_AMOUNT.getValue());
+    }
+
+    @Override
+    public boolean checkPhase(Arena arena, int wave, int phase, int spawnAmount) {
+        return MainConfig.ZOMBIE_BOMBER_PHASE.getValue().contains(phase);
     }
 }

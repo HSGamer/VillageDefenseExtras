@@ -6,16 +6,15 @@ import org.bukkit.Location;
 import org.bukkit.entity.Zombie;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import plugily.projects.villagedefense.arena.Arena;
 import plugily.projects.villagedefense.creatures.CreatureUtils;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.VersionUtils;
-
-import java.util.List;
 
 public class GhostZombie implements RunnableZombieSpawner {
 
     @Override
     public String getName() {
-        return "GHOST_ZOMBIE";
+        return "GhostZombie";
     }
 
     @Override
@@ -24,18 +23,18 @@ public class GhostZombie implements RunnableZombieSpawner {
     }
 
     @Override
-    public int getFinalAmount(int spawnAmount) {
-        return Math.min(spawnAmount, MainConfig.ZOMBIE_GHOST_AMOUNT.getValue());
-    }
-
-    @Override
-    public double getSpawnRate() {
+    public double getSpawnRate(Arena arena, int wave, int phase, int spawnAmount) {
         return MainConfig.ZOMBIE_GHOST_RATE.getValue();
     }
 
     @Override
-    public List<Integer> getSpawnPhases() {
-        return MainConfig.ZOMBIE_GHOST_PHASE.getValue();
+    public int getFinalAmount(Arena arena, int wave, int phase, int spawnAmount) {
+        return Math.min(spawnAmount, MainConfig.ZOMBIE_GHOST_AMOUNT.getValue());
+    }
+
+    @Override
+    public boolean checkPhase(Arena arena, int wave, int phase, int spawnAmount) {
+        return MainConfig.ZOMBIE_GHOST_PHASE.getValue().contains(phase);
     }
 
     @Override

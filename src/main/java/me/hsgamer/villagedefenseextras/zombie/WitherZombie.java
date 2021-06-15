@@ -8,10 +8,9 @@ import org.bukkit.Location;
 import org.bukkit.entity.WitherSkull;
 import org.bukkit.entity.Zombie;
 import org.bukkit.util.Vector;
+import plugily.projects.villagedefense.arena.Arena;
 import plugily.projects.villagedefense.creatures.CreatureUtils;
 import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.xseries.XMaterial;
-
-import java.util.List;
 
 public class WitherZombie implements RunnableZombieSpawner {
     @Override
@@ -57,17 +56,17 @@ public class WitherZombie implements RunnableZombieSpawner {
     }
 
     @Override
-    public double getSpawnRate() {
+    public double getSpawnRate(Arena arena, int wave, int phase, int spawnAmount) {
         return MainConfig.ZOMBIE_WITHER_RATE.getValue();
     }
 
     @Override
-    public List<Integer> getSpawnPhases() {
-        return MainConfig.ZOMBIE_WITHER_PHASE.getValue();
+    public boolean checkPhase(Arena arena, int wave, int phase, int spawnAmount) {
+        return MainConfig.ZOMBIE_WITHER_PHASE.getValue().contains(phase);
     }
 
     @Override
-    public int getFinalAmount(int spawnAmount) {
+    public int getFinalAmount(Arena arena, int wave, int phase, int spawnAmount) {
         return Math.min(spawnAmount, MainConfig.ZOMBIE_WITHER_AMOUNT.getValue());
     }
 }
