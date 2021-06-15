@@ -2,7 +2,6 @@ package me.hsgamer.villagedefenseextras;
 
 import me.hsgamer.hscore.bukkit.baseplugin.BasePlugin;
 import me.hsgamer.hscore.bukkit.utils.MessageUtils;
-import me.hsgamer.villagedefenseextras.command.SpawnArenaZombieCommand;
 import me.hsgamer.villagedefenseextras.command.SpawnZombieCommand;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
 import me.hsgamer.villagedefenseextras.config.MessageConfig;
@@ -90,7 +89,6 @@ public final class VillageDefenseExtras extends BasePlugin {
 
     private void registerCommand() {
         registerCommand(new SpawnZombieCommand());
-        registerCommand(new SpawnArenaZombieCommand());
     }
 
     private void registerZombie() {
