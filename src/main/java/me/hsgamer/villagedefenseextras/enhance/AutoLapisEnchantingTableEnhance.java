@@ -13,8 +13,8 @@ import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.EnchantingInventory;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import plugily.projects.commonsbox.minecraft.compat.xseries.XMaterial;
 import plugily.projects.villagedefense.arena.Arena;
-import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.xseries.XMaterial;
 
 import java.util.Map;
 import java.util.Optional;

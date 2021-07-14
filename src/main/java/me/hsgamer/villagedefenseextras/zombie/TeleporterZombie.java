@@ -9,11 +9,11 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Zombie;
+import plugily.projects.commonsbox.minecraft.compat.VersionUtils;
+import plugily.projects.commonsbox.minecraft.compat.xseries.XMaterial;
+import plugily.projects.commonsbox.minecraft.compat.xseries.XSound;
 import plugily.projects.villagedefense.arena.Arena;
 import plugily.projects.villagedefense.creatures.CreatureUtils;
-import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.VersionUtils;
-import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.xseries.XMaterial;
-import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.xseries.XSound;
 
 public class TeleporterZombie implements RunnableZombieSpawner {
     @Override

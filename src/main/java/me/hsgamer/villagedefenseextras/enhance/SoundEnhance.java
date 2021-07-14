@@ -5,13 +5,13 @@ import me.hsgamer.villagedefenseextras.config.MainConfig;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import plugily.projects.commonsbox.minecraft.compat.xseries.XSound;
 import plugily.projects.villagedefense.api.event.game.VillageGameJoinAttemptEvent;
 import plugily.projects.villagedefense.api.event.game.VillageGameLeaveAttemptEvent;
 import plugily.projects.villagedefense.api.event.game.VillageGameStartEvent;
 import plugily.projects.villagedefense.api.event.game.VillageGameStopEvent;
 import plugily.projects.villagedefense.api.event.wave.VillageWaveEndEvent;
 import plugily.projects.villagedefense.api.event.wave.VillageWaveStartEvent;
-import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.xseries.XSound;
 
 import java.util.Collection;
 import java.util.Optional;

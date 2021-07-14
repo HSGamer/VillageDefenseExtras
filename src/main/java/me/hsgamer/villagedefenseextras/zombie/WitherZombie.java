@@ -8,9 +8,9 @@ import org.bukkit.Location;
 import org.bukkit.entity.WitherSkull;
 import org.bukkit.entity.Zombie;
 import org.bukkit.util.Vector;
+import plugily.projects.commonsbox.minecraft.compat.xseries.XMaterial;
 import plugily.projects.villagedefense.arena.Arena;
 import plugily.projects.villagedefense.creatures.CreatureUtils;
-import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.xseries.XMaterial;
 
 public class WitherZombie implements RunnableZombieSpawner {
     @Override

@@ -13,6 +13,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <core.version>3.6</core.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -88,33 +89,33 @@
         <dependency>
             <groupId>plugily.projects</groupId>
             <artifactId>villagedefense</artifactId>
-            <version>4.5.9-b1</version>
+            <version>4.5.9-dev25</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>me.HSGamer</groupId>
             <artifactId>HSCore-common</artifactId>
-            <version>3.4</version>
+            <version>${core.version}</version>
         </dependency>
         <dependency>
             <groupId>me.HSGamer</groupId>
             <artifactId>HSCore-bukkit-baseplugin</artifactId>
-            <version>3.4</version>
+            <version>${core.version}</version>
         </dependency>
         <dependency>
             <groupId>me.HSGamer</groupId>
             <artifactId>HSCore-bukkit-utils</artifactId>
-            <version>3.4</version>
+            <version>${core.version}</version>
         </dependency>
         <dependency>
             <groupId>me.HSGamer</groupId>
             <artifactId>HSCore-bukkit-config</artifactId>
-            <version>3.4</version>
+            <version>${core.version}</version>
         </dependency>
         <dependency>
             <groupId>me.HSGamer</groupId>
             <artifactId>HSCore-config-path</artifactId>
-            <version>3.4</version>
+            <version>${core.version}</version>
         </dependency>
     </dependencies>
 </project>

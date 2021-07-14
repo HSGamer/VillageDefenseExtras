@@ -1,11 +1,11 @@
 package me.hsgamer.villagedefenseextras.api.powerup;
 
 import org.bukkit.entity.Player;
+import plugily.projects.commonsbox.minecraft.compat.VersionUtils;
 import plugily.projects.villagedefense.Main;
 import plugily.projects.villagedefense.arena.Arena;
 import plugily.projects.villagedefense.handlers.powerup.BasePowerup;
 import plugily.projects.villagedefense.handlers.powerup.PowerupPickupHandler;
-import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.compat.VersionUtils;
 
 import java.util.function.Consumer;
 

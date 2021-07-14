@@ -3,10 +3,10 @@ package me.hsgamer.villagedefenseextras;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import plugily.projects.commonsbox.minecraft.misc.stuff.ComplementAccessor;
 import plugily.projects.villagedefense.arena.Arena;
 import plugily.projects.villagedefense.arena.ArenaRegistry;
 import plugily.projects.villagedefense.handlers.language.Messages;
-import plugily.projects.villagedefense.plajerlair.commonsbox.minecraft.misc.stuff.ComplementAccessor;
 import plugily.projects.villagedefense.user.User;
 
 import java.util.Optional;
