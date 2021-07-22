@@ -10,9 +10,9 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.TNTPrimed;
 import org.bukkit.entity.Zombie;
 import org.bukkit.util.Vector;
-import plugily.projects.commonsbox.minecraft.compat.VersionUtils;
-import plugily.projects.commonsbox.minecraft.compat.xseries.XMaterial;
 import plugily.projects.villagedefense.arena.Arena;
+import plugily.projects.villagedefense.commonsbox.minecraft.compat.VersionUtils;
+import plugily.projects.villagedefense.commonsbox.minecraft.compat.xseries.XMaterial;
 import plugily.projects.villagedefense.creatures.CreatureUtils;
 
 public class BomberZombie implements RunnableZombieSpawner {

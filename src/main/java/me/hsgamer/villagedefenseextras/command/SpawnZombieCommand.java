@@ -66,7 +66,7 @@ public class SpawnZombieCommand extends Command {
         if (args.length == 1) {
             return VillageDefenseExtras.getInstance().getParentPlugin()
                     .getZombieSpawnerRegistry()
-                    .getZombieSpawnerList()
+                    .getZombieSpawnerSet()
                     .stream()
                     .map(ZombieSpawner::getName)
                     .collect(Collectors.toList());

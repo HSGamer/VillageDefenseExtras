@@ -21,7 +21,7 @@ import plugily.projects.villagedefense.arena.managers.ZombieSpawnerRegistry;
 import plugily.projects.villagedefense.arena.managers.spawner.ZombieSpawner;
 import plugily.projects.villagedefense.kits.KitRegistry;
 
-import java.util.List;
+import java.util.Set;
 
 public final class VillageDefenseExtras extends BasePlugin {
     private static VillageDefenseExtras instance;
@@ -94,7 +94,7 @@ public final class VillageDefenseExtras extends BasePlugin {
 
     private void registerZombie() {
         ZombieSpawnerRegistry spawnerRegistry = parentPlugin.getZombieSpawnerRegistry();
-        List<ZombieSpawner> zombieSpawnerList = spawnerRegistry.getZombieSpawnerList();
+        Set<ZombieSpawner> zombieSpawnerList = spawnerRegistry.getZombieSpawnerSet();
         zombieSpawnerList.add(new GhostZombie());
         zombieSpawnerList.add(new BomberZombie());
         zombieSpawnerList.add(new WitherZombie());

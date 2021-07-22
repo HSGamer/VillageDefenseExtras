@@ -13,7 +13,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <core.version>3.6</core.version>
+        <core.version>3.7</core.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -89,7 +89,7 @@
         <dependency>
             <groupId>plugily.projects</groupId>
             <artifactId>villagedefense</artifactId>
-            <version>4.5.9-dev25</version>
+            <version>4.5.9-dev27</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

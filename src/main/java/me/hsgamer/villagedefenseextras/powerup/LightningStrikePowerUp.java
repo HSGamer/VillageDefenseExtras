@@ -6,8 +6,8 @@ import me.hsgamer.villagedefenseextras.config.MessageConfig;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Zombie;
-import plugily.projects.commonsbox.minecraft.compat.xseries.XMaterial;
 import plugily.projects.villagedefense.arena.Arena;
+import plugily.projects.villagedefense.commonsbox.minecraft.compat.xseries.XMaterial;
 
 public class LightningStrikePowerUp extends PowerUp {
     @Override

@@ -9,7 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.InventoryHolder;
-import plugily.projects.commonsbox.minecraft.compat.events.api.CBPlayerInteractEvent;
+import plugily.projects.villagedefense.commonsbox.minecraft.compat.events.api.CBPlayerInteractEvent;
 
 public class ChestInteractFix implements Listener {
 

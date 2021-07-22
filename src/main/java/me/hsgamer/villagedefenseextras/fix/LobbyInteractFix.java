@@ -4,8 +4,8 @@ import me.hsgamer.villagedefenseextras.Utils;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import plugily.projects.commonsbox.minecraft.compat.events.api.CBPlayerInteractEvent;
 import plugily.projects.villagedefense.arena.ArenaState;
+import plugily.projects.villagedefense.commonsbox.minecraft.compat.events.api.CBPlayerInteractEvent;
 
 public class LobbyInteractFix implements Listener {
 

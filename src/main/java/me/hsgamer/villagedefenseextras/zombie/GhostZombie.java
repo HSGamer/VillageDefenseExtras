@@ -6,8 +6,8 @@ import org.bukkit.Location;
 import org.bukkit.entity.Zombie;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import plugily.projects.commonsbox.minecraft.compat.VersionUtils;
 import plugily.projects.villagedefense.arena.Arena;
+import plugily.projects.villagedefense.commonsbox.minecraft.compat.VersionUtils;
 import plugily.projects.villagedefense.creatures.CreatureUtils;
 
 public class GhostZombie implements RunnableZombieSpawner {
