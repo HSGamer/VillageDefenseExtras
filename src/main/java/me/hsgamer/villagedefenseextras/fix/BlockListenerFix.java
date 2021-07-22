@@ -4,13 +4,23 @@ import me.hsgamer.villagedefenseextras.Utils;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import plugily.projects.commonsbox.minecraft.compat.events.api.CBPlayerInteractEvent;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
 import plugily.projects.villagedefense.arena.ArenaState;
 
-public class LobbyInteractFix implements Listener {
+public class BlockListenerFix implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
-    public void onInteract(CBPlayerInteractEvent event) {
+    public void onPlace(BlockPlaceEvent event) {
+        Utils.getArena(event.getPlayer()).ifPresent(arena -> {
+            if (arena.getArenaState() != ArenaState.IN_GAME) {
+                event.setCancelled(true);
+            }
+        });
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onBreak(BlockBreakEvent event) {
         Utils.getArena(event.getPlayer()).ifPresent(arena -> {
             if (arena.getArenaState() != ArenaState.IN_GAME) {
                 event.setCancelled(true);
