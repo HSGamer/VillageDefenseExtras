@@ -10,7 +10,7 @@ public class MessageConfig extends PathableConfig {
     public static final ColorizedStringConfigPath POWER_UP_LIGHTNING_STRIKE_NAME = new ColorizedStringConfigPath("power-up.lightning-strike.name", "&b&lLightning Strike");
     public static final ColorizedStringConfigPath POWER_UP_LIGHTNING_STRIKE_DESCRIPTION = new ColorizedStringConfigPath("power-up.lightning-strike.description", "&fGod is furious! The zombies are now weaker!");
 
-    public static final StringConfigPath FIX_REQUIRED_KIT_ITEM_CANNOT_USE_ITEM = new StringConfigPath("fix.required-kit-item.cannot-use-item", "&cYou are not using the proper kit to use this item");
+    public static final StringConfigPath FIX_JOIN_STATE_CANNOT_JOIN = new StringConfigPath("fix.join-state.cannot-join", "&cYou cannot join an ending arena");
 
     public static final ColorizedStringConfigPath KIT_DEFUSER_NAME = new ColorizedStringConfigPath("kit.defuser.name", "&cDefuser");
     public static final ColorizedStringConfigPath KIT_DEFUSER_DESCRIPTION = new ColorizedStringConfigPath("kit.defuser.description", "&7You defuse any bomb you interact");
