@@ -12,7 +12,7 @@ public class BlockListenerFix implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onPlace(BlockPlaceEvent event) {
-        Utils.getArena(event.getPlayer()).ifPresent(arena -> {
+        Utils.getArena(event.getBlock().getLocation()).ifPresent(arena -> {
             if (arena.getArenaState() != ArenaState.IN_GAME) {
                 event.setCancelled(true);
             }
@@ -21,7 +21,7 @@ public class BlockListenerFix implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onBreak(BlockBreakEvent event) {
-        Utils.getArena(event.getPlayer()).ifPresent(arena -> {
+        Utils.getArena(event.getBlock().getLocation()).ifPresent(arena -> {
             if (arena.getArenaState() != ArenaState.IN_GAME) {
                 event.setCancelled(true);
             }

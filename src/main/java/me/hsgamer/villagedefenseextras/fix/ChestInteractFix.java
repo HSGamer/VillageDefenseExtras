@@ -4,7 +4,6 @@ import me.hsgamer.villagedefenseextras.Utils;
 import org.bukkit.Material;
 import org.bukkit.block.Chest;
 import org.bukkit.block.DoubleChest;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryOpenEvent;
@@ -15,7 +14,7 @@ public class ChestInteractFix implements Listener {
 
     @EventHandler
     public void onInteract(CBPlayerInteractEvent event) {
-        if (!Utils.isInArena(event.getPlayer())) {
+        if (!Utils.isInArena(event.getPlayer().getLocation())) {
             return;
         }
         if (event.getMaterial() != Material.CHEST) {
@@ -26,10 +25,7 @@ public class ChestInteractFix implements Listener {
 
     @EventHandler
     public void onOpen(InventoryOpenEvent event) {
-        if (!(event.getPlayer() instanceof Player)) {
-            return;
-        }
-        if (!Utils.isInArena((Player) event.getPlayer())) {
+        if (!Utils.isInArena(event.getPlayer().getLocation())) {
             return;
         }
         InventoryHolder holder = event.getInventory().getHolder();
