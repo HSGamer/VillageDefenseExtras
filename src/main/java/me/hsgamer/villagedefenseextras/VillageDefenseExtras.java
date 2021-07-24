@@ -69,6 +69,7 @@ public final class VillageDefenseExtras extends BasePlugin {
         registerListener(new LobbyInteractFix());
         registerListener(new ChestInteractFix());
         registerListener(new BlockListenerFix());
+        registerListener(new NakedKitAbsoluteFix());
     }
 
     private void registerEnhance() {
