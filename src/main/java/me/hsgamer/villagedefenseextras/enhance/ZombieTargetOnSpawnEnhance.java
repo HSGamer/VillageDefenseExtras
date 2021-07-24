@@ -20,6 +20,9 @@ public class ZombieTargetOnSpawnEnhance implements Listener {
         if (!(entity instanceof Zombie)) {
             return;
         }
+        if (((Zombie) entity).getTarget() != null) {
+            return;
+        }
         Optional<Arena> optionalArena = Utils.getArena(entity.getLocation());
         if (!optionalArena.isPresent()) {
             return;
