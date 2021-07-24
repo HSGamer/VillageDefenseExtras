@@ -17,11 +17,11 @@ public class Utils {
     }
 
     public static boolean isInArena(Location location) {
-        return ArenaRegistry.getArenas().stream().anyMatch(arena -> location.getWorld().equals(arena.getStartLocation().getWorld()));
+        return ArenaRegistry.getArenas().parallelStream().anyMatch(arena -> location.getWorld().equals(arena.getStartLocation().getWorld()));
     }
 
     public static Optional<Arena> getArena(Location location) {
-        return ArenaRegistry.getArenas().stream().filter(arena -> location.getWorld().equals(arena.getStartLocation().getWorld())).findFirst();
+        return ArenaRegistry.getArenas().parallelStream().filter(arena -> location.getWorld().equals(arena.getStartLocation().getWorld())).findAny();
     }
 
     public static boolean isInArena(Player player) {
