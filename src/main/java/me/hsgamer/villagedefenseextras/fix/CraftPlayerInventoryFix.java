@@ -2,7 +2,6 @@ package me.hsgamer.villagedefenseextras.fix;
 
 import me.hsgamer.villagedefenseextras.Utils;
 import org.bukkit.entity.HumanEntity;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -18,12 +17,7 @@ public class CraftPlayerInventoryFix implements Listener {
         }
 
         HumanEntity humanEntity = event.getWhoClicked();
-        if (!(humanEntity instanceof Player)) {
-            return;
-        }
-        Player player = (Player) humanEntity;
-
-        if (Utils.isInArena(player)) {
+        if (Utils.isInArena(humanEntity.getLocation())) {
             event.setCancelled(true);
         }
     }
@@ -35,12 +29,7 @@ public class CraftPlayerInventoryFix implements Listener {
         }
 
         HumanEntity humanEntity = event.getWhoClicked();
-        if (!(humanEntity instanceof Player)) {
-            return;
-        }
-        Player player = (Player) humanEntity;
-
-        if (Utils.isInArena(player)) {
+        if (Utils.isInArena(humanEntity.getLocation())) {
             event.setCancelled(true);
         }
     }

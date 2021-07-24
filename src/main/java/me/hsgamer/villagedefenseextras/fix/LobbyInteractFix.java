@@ -11,7 +11,7 @@ public class LobbyInteractFix implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onInteract(CBPlayerInteractEvent event) {
-        Utils.getArena(event.getPlayer()).ifPresent(arena -> {
+        Utils.getArena(event.getPlayer().getLocation()).ifPresent(arena -> {
             if (arena.getArenaState() != ArenaState.IN_GAME) {
                 event.setCancelled(true);
             }
