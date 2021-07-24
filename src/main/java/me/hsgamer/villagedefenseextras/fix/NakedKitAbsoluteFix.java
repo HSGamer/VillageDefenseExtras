@@ -77,6 +77,9 @@ public class NakedKitAbsoluteFix implements Listener {
             if (hasArmor) {
                 Bukkit.getScheduler().runTask(getInstance(), () -> {
                     Player player = user.getPlayer();
+                    if (!Utils.isInArena(user.getPlayer())) {
+                        return;
+                    }
                     player.sendMessage(getInstance().getParentPlugin().getChatManager().colorMessage(Messages.KITS_WILD_NAKED_CANNOT_WEAR_ARMOR));
                     player.getInventory().setHelmet(null);
                     player.getInventory().setChestplate(null);
