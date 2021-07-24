@@ -28,11 +28,15 @@ public class ZombieTargetOnSpawnEnhance implements Listener {
         if (arena.getArenaState() != ArenaState.IN_GAME) {
             return;
         }
-        List<Villager> villagerList = arena.getVillagers();
-        List<Player> players = arena.getPlayersLeft();
-        LivingEntity target = ThreadLocalRandom.current().nextDouble() < MainConfig.ENHANCE_ZOMBIE_TARGET_ON_PLAYER.getValue()
-                ? players.get(ThreadLocalRandom.current().nextInt(players.size()))
-                : villagerList.get(ThreadLocalRandom.current().nextInt(villagerList.size()));
+        LivingEntity target = null;
+        if (ThreadLocalRandom.current().nextDouble() < MainConfig.ENHANCE_ZOMBIE_TARGET_ON_PLAYER.getValue()) {
+            List<Player> players = arena.getPlayersLeft();
+            target = players.get(ThreadLocalRandom.current().nextInt(players.size()));
+        }
+        if (ThreadLocalRandom.current().nextDouble() < MainConfig.ENHANCE_ZOMBIE_TARGET_ON_VILLAGER.getValue()) {
+            List<Villager> villagerList = arena.getVillagers();
+            target = villagerList.get(ThreadLocalRandom.current().nextInt(villagerList.size()));
+        }
         ((Zombie) entity).setTarget(target);
     }
 }
