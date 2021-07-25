@@ -29,6 +29,8 @@ public class MainConfig extends PathableConfig {
     public static final DoubleConfigPath ENHANCE_ZOMBIE_TARGET_ON_PLAYER = new DoubleConfigPath("enhance.zombie-target.on-player", 0.35);
     public static final DoubleConfigPath ENHANCE_ZOMBIE_TARGET_ON_VILLAGER = new DoubleConfigPath("enhance.zombie-target.on-villager", 0.50);
 
+    public static final BooleanConfigPath ENHANCE_RESET_COUNTER_ON_WAVE = new BooleanConfigPath("enhance.reset-counter-on-wave", true);
+
     public static final IntegerConfigPath ZOMBIE_GHOST_WAVE = new IntegerConfigPath("zombie.ghost.wave", 8);
     public static final IntegerConfigPath ZOMBIE_GHOST_AMOUNT = new IntegerConfigPath("zombie.ghost.amount", 10);
     public static final DoubleConfigPath ZOMBIE_GHOST_RATE = new DoubleConfigPath("zombie.ghost.rate", 0.2);

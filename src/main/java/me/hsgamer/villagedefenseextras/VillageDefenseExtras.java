@@ -6,6 +6,7 @@ import me.hsgamer.villagedefenseextras.command.SpawnZombieCommand;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
 import me.hsgamer.villagedefenseextras.config.MessageConfig;
 import me.hsgamer.villagedefenseextras.enhance.AutoLapisEnchantingTableEnhance;
+import me.hsgamer.villagedefenseextras.enhance.ResetCounterEnhance;
 import me.hsgamer.villagedefenseextras.enhance.SoundEnhance;
 import me.hsgamer.villagedefenseextras.enhance.ZombieTargetOnSpawnEnhance;
 import me.hsgamer.villagedefenseextras.fix.*;
@@ -77,6 +78,7 @@ public final class VillageDefenseExtras extends BasePlugin {
         registerListener(new AutoLapisEnchantingTableEnhance());
         registerListener(new SoundEnhance());
         registerListener(new ZombieTargetOnSpawnEnhance());
+        registerListener(new ResetCounterEnhance());
     }
 
     private void registerKit() {
