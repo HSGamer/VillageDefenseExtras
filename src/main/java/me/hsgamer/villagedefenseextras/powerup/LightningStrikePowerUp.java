@@ -4,18 +4,18 @@ import me.hsgamer.villagedefenseextras.api.powerup.PowerUp;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
 import me.hsgamer.villagedefenseextras.config.MessageConfig;
 import org.bukkit.Location;
+import org.bukkit.entity.Creature;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Zombie;
 import plugily.projects.villagedefense.arena.Arena;
 import plugily.projects.villagedefense.commonsbox.minecraft.compat.xseries.XMaterial;
 
 public class LightningStrikePowerUp extends PowerUp {
     @Override
     protected void onPickup(Player player, Arena arena) {
-        for (Zombie zombie : arena.getZombies()) {
-            Location location = zombie.getLocation();
+        for (Creature creature : arena.getEnemies()) {
+            Location location = creature.getLocation();
             location.getWorld().strikeLightningEffect(location);
-            zombie.damage(zombie.getHealth() / 2, player);
+            creature.damage(creature.getHealth() / 2, player);
         }
     }
 

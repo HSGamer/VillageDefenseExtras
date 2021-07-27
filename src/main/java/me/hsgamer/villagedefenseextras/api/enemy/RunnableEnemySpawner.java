@@ -1,16 +1,16 @@
-package me.hsgamer.villagedefenseextras.api.zombie;
+package me.hsgamer.villagedefenseextras.api.enemy;
 
 import org.bukkit.Location;
-import org.bukkit.entity.Zombie;
+import org.bukkit.entity.Creature;
 import org.bukkit.scheduler.BukkitRunnable;
-import plugily.projects.villagedefense.arena.managers.spawner.SimpleZombieSpawner;
+import plugily.projects.villagedefense.arena.managers.spawner.SimpleEnemySpawner;
 
 import static me.hsgamer.villagedefenseextras.VillageDefenseExtras.getInstance;
 
-public interface RunnableZombieSpawner extends SimpleZombieSpawner {
-    Zombie createBaseZombie(Location location);
+public interface RunnableEnemySpawner extends SimpleEnemySpawner {
+    Creature createBaseEnemy(Location location);
 
-    void onTick(Zombie zombie);
+    void onTick(Creature creature);
 
     long getPeriod();
 
@@ -21,16 +21,16 @@ public interface RunnableZombieSpawner extends SimpleZombieSpawner {
     }
 
     @Override
-    default Zombie spawnZombie(Location location) {
-        Zombie zombie = createBaseZombie(location);
+    default Creature spawn(Location location) {
+        Creature creature = createBaseEnemy(location);
         BukkitRunnable runnable = new BukkitRunnable() {
             @Override
             public void run() {
-                if (zombie.isDead()) {
+                if (creature.isDead()) {
                     cancel();
                     return;
                 }
-                onTick(zombie);
+                onTick(creature);
             }
         };
         if (isAsync()) {
@@ -38,6 +38,6 @@ public interface RunnableZombieSpawner extends SimpleZombieSpawner {
         } else {
             runnable.runTaskTimer(getInstance(), getDelay(), getPeriod());
         }
-        return zombie;
+        return creature;
     }
 }

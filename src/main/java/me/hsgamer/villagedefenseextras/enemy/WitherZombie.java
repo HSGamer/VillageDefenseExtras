@@ -1,36 +1,36 @@
-package me.hsgamer.villagedefenseextras.zombie;
+package me.hsgamer.villagedefenseextras.enemy;
 
 import me.hsgamer.villagedefenseextras.VillageDefenseExtras;
-import me.hsgamer.villagedefenseextras.api.zombie.RunnableZombieSpawner;
+import me.hsgamer.villagedefenseextras.api.enemy.RunnableEnemySpawner;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.entity.Creature;
 import org.bukkit.entity.WitherSkull;
-import org.bukkit.entity.Zombie;
 import org.bukkit.util.Vector;
 import plugily.projects.villagedefense.arena.Arena;
 import plugily.projects.villagedefense.commonsbox.minecraft.compat.xseries.XMaterial;
 import plugily.projects.villagedefense.creatures.CreatureUtils;
 
-public class WitherZombie implements RunnableZombieSpawner {
+public class WitherZombie implements RunnableEnemySpawner {
     @Override
-    public Zombie createBaseZombie(Location location) {
-        Zombie zombie = CreatureUtils.getCreatureInitializer().spawnFastZombie(location);
-        zombie.getEquipment().setHelmet(XMaterial.WITHER_SKELETON_SKULL.parseItem());
-        zombie.getEquipment().setHelmetDropChance(0.0F);
-        return zombie;
+    public Creature createBaseEnemy(Location location) {
+        Creature creature = CreatureUtils.getCreatureInitializer().spawnFastZombie(location);
+        creature.getEquipment().setHelmet(XMaterial.WITHER_SKELETON_SKULL.parseItem());
+        creature.getEquipment().setHelmetDropChance(0.0F);
+        return creature;
     }
 
     @Override
-    public void onTick(Zombie zombie) {
-        if (zombie.getTarget() == null) {
+    public void onTick(Creature creature) {
+        if (creature.getTarget() == null) {
             return;
         }
-        Location location = zombie.getLocation();
+        Location location = creature.getLocation();
         Vector power = location.getDirection().multiply(MainConfig.ZOMBIE_WITHER_SHOOT_POWER.getValue());
         boolean charged = MainConfig.ZOMBIE_WITHER_CHARGED.getValue();
         Bukkit.getScheduler().runTask(VillageDefenseExtras.getInstance(), () -> {
-            WitherSkull skull = zombie.launchProjectile(WitherSkull.class, power);
+            WitherSkull skull = creature.launchProjectile(WitherSkull.class, power);
             skull.setCharged(charged);
         });
     }

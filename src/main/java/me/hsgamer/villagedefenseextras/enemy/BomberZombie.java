@@ -1,42 +1,42 @@
-package me.hsgamer.villagedefenseextras.zombie;
+package me.hsgamer.villagedefenseextras.enemy;
 
 import me.hsgamer.villagedefenseextras.VillageDefenseExtras;
-import me.hsgamer.villagedefenseextras.api.zombie.RunnableZombieSpawner;
+import me.hsgamer.villagedefenseextras.api.enemy.RunnableEnemySpawner;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.entity.Creature;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.TNTPrimed;
-import org.bukkit.entity.Zombie;
 import org.bukkit.util.Vector;
 import plugily.projects.villagedefense.arena.Arena;
 import plugily.projects.villagedefense.commonsbox.minecraft.compat.VersionUtils;
 import plugily.projects.villagedefense.commonsbox.minecraft.compat.xseries.XMaterial;
 import plugily.projects.villagedefense.creatures.CreatureUtils;
 
-public class BomberZombie implements RunnableZombieSpawner {
+public class BomberZombie implements RunnableEnemySpawner {
     @Override
-    public Zombie createBaseZombie(Location location) {
-        Zombie zombie = CreatureUtils.getCreatureInitializer().spawnFastZombie(location);
-        zombie.getEquipment().setHelmet(XMaterial.REDSTONE_BLOCK.parseItem());
-        zombie.getEquipment().setHelmetDropChance(0.0F);
-        VersionUtils.setItemInHand(zombie, XMaterial.TNT.parseItem());
-        VersionUtils.setItemInHandDropChance(zombie, 0.0F);
-        return zombie;
+    public Creature createBaseEnemy(Location location) {
+        Creature creature = CreatureUtils.getCreatureInitializer().spawnFastZombie(location);
+        creature.getEquipment().setHelmet(XMaterial.REDSTONE_BLOCK.parseItem());
+        creature.getEquipment().setHelmetDropChance(0.0F);
+        VersionUtils.setItemInHand(creature, XMaterial.TNT.parseItem());
+        VersionUtils.setItemInHandDropChance(creature, 0.0F);
+        return creature;
     }
 
     @Override
-    public void onTick(Zombie zombie) {
-        Entity target = zombie.getTarget();
+    public void onTick(Creature creature) {
+        Entity target = creature.getTarget();
         if (target == null) {
             return;
         }
-        Location location = zombie.getLocation();
+        Location location = creature.getLocation();
         double distance = location.distance(target.getLocation());
         double y = MainConfig.ZOMBIE_BOMBER_THROW_OFFSET_Y.getValue();
         double power = Math.sqrt(Math.pow(distance / 2, 2) + Math.pow(y, 2)) / MainConfig.ZOMBIE_BOMBER_THROW_POWER_DIVIDER.getValue();
-        Location eyeLocation = zombie.getEyeLocation();
+        Location eyeLocation = creature.getEyeLocation();
         Vector vector = eyeLocation.getDirection()
                 .add(new Vector(0, y, 0))
                 .normalize()

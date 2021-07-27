@@ -11,19 +11,19 @@ import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 import org.jetbrains.annotations.NotNull;
 import plugily.projects.villagedefense.arena.Arena;
-import plugily.projects.villagedefense.arena.managers.spawner.SimpleZombieSpawner;
-import plugily.projects.villagedefense.arena.managers.spawner.ZombieSpawner;
+import plugily.projects.villagedefense.arena.managers.spawner.EnemySpawner;
+import plugily.projects.villagedefense.arena.managers.spawner.SimpleEnemySpawner;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class SpawnZombieCommand extends Command {
+public class SpawnEnemyCommand extends Command {
 
-    public SpawnZombieCommand() {
-        super("spawnzombie", "Spawn a zombie", "/spawnzombie <zombie_name>", Collections.emptyList());
-        Permission permission = new Permission("vdextra.spawnzombie", PermissionDefault.OP);
+    public SpawnEnemyCommand() {
+        super("spawnenemy", "Spawn a enemy", "/spawnenemy <zombie_name>", Collections.emptyList());
+        Permission permission = new Permission("vdextra.spawnenemy", PermissionDefault.OP);
         setPermission(permission.getName());
     }
 
@@ -40,23 +40,23 @@ public class SpawnZombieCommand extends Command {
             MessageUtils.sendMessage(sender, getUsage());
             return false;
         }
-        Optional<ZombieSpawner> optionalZombieSpawner = VillageDefenseExtras.getInstance().getParentPlugin().getZombieSpawnerRegistry().getSpawnerByName(args[0]);
-        if (!optionalZombieSpawner.isPresent()) {
-            MessageUtils.sendMessage(sender, "&cThat zombie name is not found");
+        Optional<EnemySpawner> optionalEnemySpawner = VillageDefenseExtras.getInstance().getParentPlugin().getEnemySpawnerRegistry().getSpawnerByName(args[0]);
+        if (!optionalEnemySpawner.isPresent()) {
+            MessageUtils.sendMessage(sender, "&cThat enemy name is not found");
             return false;
         }
         Location location = ((Player) sender).getLocation();
-        ZombieSpawner zombieSpawner = optionalZombieSpawner.get();
-        if (!(zombieSpawner instanceof SimpleZombieSpawner)) {
-            MessageUtils.sendMessage(sender, "&cThat zombie is not supported");
+        EnemySpawner enemySpawner = optionalEnemySpawner.get();
+        if (!(enemySpawner instanceof SimpleEnemySpawner)) {
+            MessageUtils.sendMessage(sender, "&cThat enemy is not supported");
             return false;
         }
-        SimpleZombieSpawner simpleZombieSpawner = (SimpleZombieSpawner) zombieSpawner;
+        SimpleEnemySpawner simpleEnemySpawner = (SimpleEnemySpawner) enemySpawner;
         Optional<Arena> optionalArena = Utils.getArena((Player) sender);
         if (optionalArena.isPresent()) {
-            simpleZombieSpawner.spawnZombie(location, optionalArena.get());
+            simpleEnemySpawner.spawn(location, optionalArena.get());
         } else {
-            simpleZombieSpawner.spawnZombie(location);
+            simpleEnemySpawner.spawn(location);
         }
         return true;
     }
@@ -65,10 +65,11 @@ public class SpawnZombieCommand extends Command {
     public @NotNull List<String> tabComplete(@NotNull CommandSender sender, @NotNull String alias, @NotNull String[] args) throws IllegalArgumentException {
         if (args.length == 1) {
             return VillageDefenseExtras.getInstance().getParentPlugin()
-                    .getZombieSpawnerRegistry()
-                    .getZombieSpawnerSet()
+                    .getEnemySpawnerRegistry()
+                    .getEnemySpawnerSet()
                     .stream()
-                    .map(ZombieSpawner::getName)
+                    .filter(SimpleEnemySpawner.class::isInstance)
+                    .map(EnemySpawner::getName)
                     .collect(Collectors.toList());
         } else {
             return Collections.emptyList();

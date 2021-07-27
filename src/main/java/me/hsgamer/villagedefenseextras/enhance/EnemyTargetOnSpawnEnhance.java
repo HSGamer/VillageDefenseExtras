@@ -8,19 +8,20 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntitySpawnEvent;
 import plugily.projects.villagedefense.arena.Arena;
 import plugily.projects.villagedefense.arena.ArenaState;
+import plugily.projects.villagedefense.creatures.CreatureUtils;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class ZombieTargetOnSpawnEnhance implements Listener {
+public class EnemyTargetOnSpawnEnhance implements Listener {
     @EventHandler
     public void onMobSpawn(EntitySpawnEvent event) {
         Entity entity = event.getEntity();
-        if (!(entity instanceof Zombie)) {
+        if (!(CreatureUtils.isEnemy(entity))) {
             return;
         }
-        if (((Zombie) entity).getTarget() != null) {
+        if (((Creature) entity).getTarget() != null) {
             return;
         }
         Optional<Arena> optionalArena = Utils.getArena(entity.getLocation());
@@ -32,17 +33,17 @@ public class ZombieTargetOnSpawnEnhance implements Listener {
             return;
         }
         LivingEntity target = null;
-        if (ThreadLocalRandom.current().nextDouble() < MainConfig.ENHANCE_ZOMBIE_TARGET_ON_PLAYER.getValue()) {
+        if (ThreadLocalRandom.current().nextDouble() < MainConfig.ENHANCE_ENEMY_TARGET_ON_PLAYER.getValue()) {
             List<Player> players = arena.getPlayersLeft();
             if (!players.isEmpty()) {
                 target = players.get(ThreadLocalRandom.current().nextInt(players.size()));
             }
-        } else if (ThreadLocalRandom.current().nextDouble() < MainConfig.ENHANCE_ZOMBIE_TARGET_ON_VILLAGER.getValue()) {
+        } else if (ThreadLocalRandom.current().nextDouble() < MainConfig.ENHANCE_ENEMY_TARGET_ON_VILLAGER.getValue()) {
             List<Villager> villagerList = arena.getVillagers();
             if (!villagerList.isEmpty()) {
                 target = villagerList.get(ThreadLocalRandom.current().nextInt(villagerList.size()));
             }
         }
-        ((Zombie) entity).setTarget(target);
+        ((Creature) entity).setTarget(target);
     }
 }

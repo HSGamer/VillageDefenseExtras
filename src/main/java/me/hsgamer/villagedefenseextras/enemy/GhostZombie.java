@@ -1,16 +1,16 @@
-package me.hsgamer.villagedefenseextras.zombie;
+package me.hsgamer.villagedefenseextras.enemy;
 
-import me.hsgamer.villagedefenseextras.api.zombie.RunnableZombieSpawner;
+import me.hsgamer.villagedefenseextras.api.enemy.RunnableEnemySpawner;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
 import org.bukkit.Location;
-import org.bukkit.entity.Zombie;
+import org.bukkit.entity.Creature;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import plugily.projects.villagedefense.arena.Arena;
 import plugily.projects.villagedefense.commonsbox.minecraft.compat.VersionUtils;
 import plugily.projects.villagedefense.creatures.CreatureUtils;
 
-public class GhostZombie implements RunnableZombieSpawner {
+public class GhostZombie implements RunnableEnemySpawner {
 
     @Override
     public String getName() {
@@ -38,17 +38,17 @@ public class GhostZombie implements RunnableZombieSpawner {
     }
 
     @Override
-    public Zombie createBaseZombie(Location location) {
-        Zombie zombie = CreatureUtils.getCreatureInitializer().spawnFastZombie(location);
-        zombie.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 1));
-        return zombie;
+    public Creature createBaseEnemy(Location location) {
+        Creature creature = CreatureUtils.getCreatureInitializer().spawnFastZombie(location);
+        creature.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 1));
+        return creature;
     }
 
     @Override
-    public void onTick(Zombie zombie) {
-        VersionUtils.sendParticles("SMOKE_NORMAL", null, zombie.getEyeLocation(), 1, 0.2, 0.1, 0.2);
-        VersionUtils.sendParticles("SMOKE_NORMAL", null, zombie.getLocation(), 1, 0.2, 0.1, 0.2);
-        VersionUtils.sendParticles("DRIP_LAVA", null, zombie.getLocation(), 0, 0.0D, 0.0D, 0.0D);
+    public void onTick(Creature creature) {
+        VersionUtils.sendParticles("SMOKE_NORMAL", null, creature.getEyeLocation(), 1, 0.2, 0.1, 0.2);
+        VersionUtils.sendParticles("SMOKE_NORMAL", null, creature.getLocation(), 1, 0.2, 0.1, 0.2);
+        VersionUtils.sendParticles("DRIP_LAVA", null, creature.getLocation(), 0, 0.0D, 0.0D, 0.0D);
     }
 
     @Override

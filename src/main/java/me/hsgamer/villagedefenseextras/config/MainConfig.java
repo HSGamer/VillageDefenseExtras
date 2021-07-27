@@ -26,8 +26,8 @@ public class MainConfig extends PathableConfig {
     public static final StringConfigPath ENHANCE_SOUND_WAVE_START = new StringConfigPath("enhance.sound.wave-start", "");
     public static final StringConfigPath ENHANCE_SOUND_WAVE_END = new StringConfigPath("enhance.sound.wave-end", "");
 
-    public static final DoubleConfigPath ENHANCE_ZOMBIE_TARGET_ON_PLAYER = new DoubleConfigPath("enhance.zombie-target.on-player", 0.35);
-    public static final DoubleConfigPath ENHANCE_ZOMBIE_TARGET_ON_VILLAGER = new DoubleConfigPath("enhance.zombie-target.on-villager", 0.50);
+    public static final DoubleConfigPath ENHANCE_ENEMY_TARGET_ON_PLAYER = new DoubleConfigPath("enhance.enemy-target.on-player", 0.35);
+    public static final DoubleConfigPath ENHANCE_ENEMY_TARGET_ON_VILLAGER = new DoubleConfigPath("enhance.enemy-target.on-villager", 0.50);
 
     public static final BooleanConfigPath ENHANCE_RESET_COUNTER_ON_WAVE = new BooleanConfigPath("enhance.reset-counter-on-wave", true);
 
