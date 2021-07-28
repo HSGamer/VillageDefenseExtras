@@ -71,6 +71,7 @@ public final class VillageDefenseExtras extends BasePlugin {
         registerListener(new ChestInteractFix());
         registerListener(new BlockListenerFix());
         registerListener(new JoinStateFix());
+        registerListener(new IngameBossbarFix());
     }
 
     private void registerEnhance() {
