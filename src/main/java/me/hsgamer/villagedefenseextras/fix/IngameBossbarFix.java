@@ -10,8 +10,9 @@ import plugily.projects.villagedefense.arena.ArenaState;
 public class IngameBossbarFix implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onJoin(VillageGameJoinAttemptEvent event) {
-        if (event.getArena().getArenaState() == ArenaState.IN_GAME) {
-            event.getArena().doBarAction(Arena.BarAction.ADD, event.getPlayer());
+        Arena arena = event.getArena();
+        if (arena.getArenaState() == ArenaState.IN_GAME && arena.getGameBar() != null) {
+            arena.doBarAction(Arena.BarAction.ADD, event.getPlayer());
         }
     }
 }
