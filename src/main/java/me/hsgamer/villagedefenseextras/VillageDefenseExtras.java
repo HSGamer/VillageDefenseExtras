@@ -4,10 +4,7 @@ import me.hsgamer.hscore.bukkit.baseplugin.BasePlugin;
 import me.hsgamer.hscore.bukkit.utils.MessageUtils;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
 import me.hsgamer.villagedefenseextras.config.MessageConfig;
-import me.hsgamer.villagedefenseextras.enhance.AutoLapisEnchantingTableEnhance;
-import me.hsgamer.villagedefenseextras.enhance.EnemyTargetOnSpawnEnhance;
-import me.hsgamer.villagedefenseextras.enhance.ResetCounterEnhance;
-import me.hsgamer.villagedefenseextras.enhance.SoundEnhance;
+import me.hsgamer.villagedefenseextras.enhance.*;
 import me.hsgamer.villagedefenseextras.fix.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import plugily.projects.villagedefense.Main;
@@ -62,6 +59,7 @@ public final class VillageDefenseExtras extends BasePlugin {
         registerListener(new SoundEnhance());
         registerListener(new EnemyTargetOnSpawnEnhance());
         registerListener(new ResetCounterEnhance());
+        registerListener(new EnemyTargetEnhance());
     }
 
     public Main getParentPlugin() {
