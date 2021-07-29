@@ -1,10 +1,12 @@
 package me.hsgamer.villagedefenseextras.fix;
 
 import me.hsgamer.villagedefenseextras.Utils;
-import org.bukkit.entity.*;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
+import plugily.projects.villagedefense.creatures.CreatureUtils;
 
 public class DefenseTargetFix implements Listener {
     @EventHandler
@@ -12,11 +14,11 @@ public class DefenseTargetFix implements Listener {
         Entity entity = event.getEntity();
         LivingEntity target = event.getTarget();
 
-        if (!(entity instanceof Wolf) && !(entity instanceof IronGolem)) {
+        if (CreatureUtils.isEnemy(entity)) {
             return;
         }
 
-        if (Utils.isInArena(entity.getLocation()) && target instanceof Villager) {
+        if (Utils.isInArena(entity.getLocation()) && !CreatureUtils.isEnemy(target)) {
             event.setTarget(null);
             event.setCancelled(true);
         }
