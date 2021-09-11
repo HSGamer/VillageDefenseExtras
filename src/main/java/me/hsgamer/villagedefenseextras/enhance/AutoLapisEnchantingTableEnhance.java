@@ -2,6 +2,7 @@ package me.hsgamer.villagedefenseextras.enhance;
 
 import me.hsgamer.villagedefenseextras.Utils;
 import me.hsgamer.villagedefenseextras.config.MainConfig;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.event.EventHandler;
@@ -13,6 +14,7 @@ import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.EnchantingInventory;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.java.JavaPlugin;
 import plugily.projects.villagedefense.arena.Arena;
 import plugily.projects.villagedefense.commonsbox.minecraft.compat.xseries.XMaterial;
 
@@ -97,8 +99,7 @@ public class AutoLapisEnchantingTableEnhance implements Listener {
     public void onEnchant(EnchantItemEvent event) {
         Inventory inventory = event.getInventory();
         if (inventoryMap.containsKey(inventory)) {
-            inventory.setItem(1, null);
-            inventory.setItem(1, inventoryMap.get(inventory).clone());
+            Bukkit.getScheduler().runTask(JavaPlugin.getProvidingPlugin(getClass()), () -> inventory.setItem(1, inventoryMap.get(inventory).clone()));
         }
     }
 }
