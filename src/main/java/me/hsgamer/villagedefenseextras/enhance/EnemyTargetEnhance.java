@@ -19,7 +19,6 @@ public class EnemyTargetEnhance implements Listener {
         }
 
         if (Utils.isInArena(entity.getLocation())) {
-            event.setTarget(null);
             event.setCancelled(true);
         }
     }

@@ -30,7 +30,7 @@ public class DefenseTargetFix implements Listener {
         if (optionalArena.isPresent() && !CreatureUtils.isEnemy(target)) {
             List<Creature> list = optionalArena.get().getEnemies();
             Location location = entity.getLocation();
-            Optional<Creature> optionalTarget = list.stream()
+            Optional<Creature> optionalTarget = list.parallelStream()
                     .filter(c -> Objects.equals(c.getLocation().getWorld(), location.getWorld()))
                     .min(Comparator.comparingDouble(c -> c.getLocation().distance(location)));
             if (optionalTarget.isPresent()) {
