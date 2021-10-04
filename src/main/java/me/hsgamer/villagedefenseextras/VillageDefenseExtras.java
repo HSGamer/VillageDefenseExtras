@@ -60,6 +60,7 @@ public final class VillageDefenseExtras extends BasePlugin {
         registerListener(new EnemyTargetOnSpawnEnhance());
         registerListener(new ResetCounterEnhance());
         registerListener(new EnemyTargetEnhance());
+        registerListener(new ClearMobEnhance());
     }
 
     public Main getParentPlugin() {
